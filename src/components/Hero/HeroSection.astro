@@ -1,89 +1,72 @@
----
+<main class="grid lg:grid-cols-2 place-items-center pt-[120px] md:pt-[140px] lg:pt-[160px] xl:pt-[180px] pb-8 md:pb-28 max-w-7xl mx-auto px-6 lg:px-8">
+  <!-- Columna izquierda (texto) -->
+  <div class="flex flex-col gap-6 max-w-xl">
+    <!-- Vector decorativo -->
+    <img
+      src="/hero/vector.png"
+      alt="Decoración"
+      class="w-12 h-12 md:w-16 md:h-16 animate-float"
+    />
 
----
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#020D3B] leading-tight">
+      Diseño + Código <br />
+      Sin Intermediarios
+    </h1>
 
-<section class="relative overflow-hidden">
-  <!-- Grid principal -->
-  <div
-    class="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 items-center min-h-[calc(100vh-100px)]"
-  >
-    <div class="relative z-10">
-      <img
-        src="/hero/vector.png"
-        alt="Decoración vector"
-        class="absolute -top-12 left-0 w-16 h-16 object-contain animate-float"
-      />
+    <p class="text-[#2B2B2B] text-base md:text-lg">
+      Somos un pequeño equipo freelance que convierte ideas en experiencias digitales.
+      Trabajamos directo con vos, sin vueltas.
+    </p>
 
-      <!-- Texto -->
-      <div class="relative z-10 pt-8">
-        <h1
-          class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#020D3B] leading-tight"
-        >
-          Diseño + Código <br /> Sin Intermediarios
-        </h1>
-        <!-- resto igual -->
-      </div>
-
-      <p class="mt-4 text-[#2B2B2B] max-w-md">
-        Somos un pequeño equipo freelance que convierte ideas en experiencias
-        digitales. Trabajamos directo con vos, sin vueltas.
-      </p>
-
-      <a
-        href="#contacto"
-        class="inline-block mt-6 px-6 py-3 bg-[#2563eb] text-white font-semibold rounded-md hover:bg-blue-600 transition"
-      >
-        Hablemos
-      </a>
-    </div>
-
-    <!-- Columna derecha: imágenes + decoraciones -->
-    <div class="relative mt-12 md:mt-0 justify-end items-center hidden md:flex">
-      <!-- Imágenes con decoraciones -->
-      <div class="relative flex justify-end items-center">
-        <!-- Flecha -->
-        <img
-          src="/hero/vector_flecha.png"
-          alt="Flecha"
-          class="absolute left-[-64px] top-[60px] w-[181.82px] h-[158.03px] object-contain z-10"
-        />
-
-        <!-- Contenedor horizontal -->
-        <div class="flex items-end gap-6">
-          <!-- img1 a la izquierda -->
-          <div
-            class="relative overflow-hidden shadow-lg w-[196.8px] h-[246px] rounded-[50px] animate-slide-in"
-          >
-            <img
-              src="/hero/img1.jpg"
-              alt="Oficina"
-              class="w-full h-full object-cover"
-            />
-          </div>
-
-          <!-- img2 a la derecha -->
-          <div
-            class="overflow-hidden shadow-lg w-[309px] h-[588px] animate-slide-in"
-            style="border-radius: 40px 0px 0px 0px"
-          >
-            <img
-              src="/hero/img2.jpg"
-              alt="Equipo trabajando"
-              class="w-full h-full object-cover"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Botón flecha hacia abajo -->
-  <div class="flex justify-center mt-10">
     <a
-      href="#servicios" 
-      class="w-14 h-14 rounded-full bg-blue-600 flex items-center justify-center animate-bounce"
+      href="#contacto"
+      class="inline-block w-fit mt-2 px-6 py-3 bg-[#2563eb] text-white font-semibold rounded-md hover:bg-blue-600 transition"
     >
-      <img src="/hero/vector_down.png" alt="Scroll down" class="w-3 h-3" />
+      Hablemos
     </a>
   </div>
-</section>
+
+  <!-- Columna derecha (imágenes) -->
+  <div class="relative hidden md:flex justify-end items-end mt-12 md:mt-0">
+    <!-- Flecha decorativa -->
+    <img
+      src="/hero/vector_flecha.png"
+      alt="Flecha"
+      class="absolute left-[-64px] top-[100px] w-[180px] h-[150px] object-contain z-10"
+    />
+
+    <!-- Contenedor horizontal de imágenes -->
+    <div class="flex items-end gap-6">
+      <!-- Imagen 1 -->
+      <div class="relative overflow-hidden shadow-lg w-[196.8px] h-[246px] rounded-[50px] animate-slide-in">
+        <img
+          src="/hero/img1.jpg"
+          alt="Oficina"
+          class="w-full h-full object-cover"
+        />
+      </div>
+
+      <!-- Imagen 2 -->
+      <div
+        class="overflow-hidden shadow-lg animate-slide-in"
+        style="border-radius: 40px 0px 0px 0px;"
+      >
+        <img
+          src="/hero/img2.jpg"
+          alt="Equipo trabajando"
+          class="w-[240px] lg:w-[300px] xl:w-[309px] h-auto max-h-[520px] object-cover"
+        />
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Botón de scroll -->
+<div class="flex justify-center mt-10">
+  <a
+    href="#servicios"
+    class="w-14 h-14 rounded-full bg-blue-600 flex items-center justify-center animate-bounce"
+  >
+    <img src="/hero/vector_down.png" alt="Scroll down" class="w-3 h-3" />
+  </a>
+</div>
