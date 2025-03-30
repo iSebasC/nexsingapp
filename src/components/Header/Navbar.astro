@@ -1,0 +1,134 @@
+---
+// Navbar.astro
+---
+
+<nav class="bg-[#020D3B] text-white w-full fixed top-0 left-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between md:grid md:grid-cols-3 h-20">
+      <!-- Logo -->
+      <div class="flex justify-start items-center">
+        <img src="/logo.png" alt="Logo NS" class="h-10 w-auto" />
+      </div>
+
+      <!-- Links escritorio -->
+      <div class="hidden md:flex justify-center space-x-8 font-semibold">
+        <a
+          href="#servicios"
+          class="hover:text-blue-300 transition whitespace-nowrap">Servicios</a
+        >
+        <a
+          href="#nosotros"
+          class="hover:text-blue-300 transition whitespace-nowrap"
+          >Sobre Nosotros</a
+        >
+        <a
+          href="#proyectos"
+          class="hover:text-blue-300 transition whitespace-nowrap">Proyectos</a
+        >
+        <a
+          href="#testimonios"
+          class="hover:text-blue-300 transition whitespace-nowrap"
+          >Testimonios</a
+        >
+        <a
+          href="#contacto"
+          class="hover:text-blue-300 transition whitespace-nowrap">Contacto</a
+        >
+      </div>
+
+      <!-- Idioma y hamburguesa -->
+      <div class="flex justify-end items-center gap-4">
+        <a
+          href="#idioma"
+          class="hidden md:inline font-semibold hover:text-blue-300 transition"
+          >EN</a
+        >
+        <!-- Menú hamburguesa visible solo en móvil -->
+        <button
+          id="menu-toggle"
+          class="md:hidden focus:outline-none"
+          aria-label="Abrir menú"
+        >
+          <svg
+            class="w-6 h-6 text-white"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menú móvil -->
+  <div id="mobile-menu" class="fixed inset-0 z-50 hidden">
+    <div class="flex h-full">
+      <!-- Panel lateral -->
+      <div
+        class="w-3/4 max-w-xs bg-white text-black p-6 pt-4 space-y-4 shadow-md relative"
+      >
+        <!-- Botón cerrar (pegado en la esquina) -->
+        <button
+          id="close-menu"
+          class="absolute top-2 right-2 bg-[#020D3B] text-white rounded w-6 h-6 flex items-center justify-center text-sm font-bold"
+          aria-label="Cerrar menú"
+        >
+          ✕
+        </button>
+
+        <!-- Enlaces -->
+        <a
+          href="#servicios"
+          class="block font-semibold hover:bg-gray-100 px-4 py-2 rounded transition"
+          >Servicios</a
+        >
+        <a
+          href="#nosotros"
+          class="block font-semibold hover:bg-gray-100 px-4 py-2 rounded transition"
+          >Sobre Nosotros</a
+        >
+        <a
+          href="#proyectos"
+          class="block font-semibold hover:bg-gray-100 px-4 py-2 rounded transition"
+          >Proyectos</a
+        >
+        <a
+          href="#testimonios"
+          class="block font-semibold hover:bg-gray-100 px-4 py-2 rounded transition"
+          >Testimonios</a
+        >
+        <a
+          href="#contacto"
+          class="block font-semibold hover:bg-gray-100 px-4 py-2 rounded transition"
+          >Contacto</a
+        >
+      </div>
+
+      <!-- Overlay oscuro -->
+      <div id="overlay" class="flex-1 bg-black bg-opacity-50"></div>
+    </div>
+  </div>
+
+  <!-- Script toggle -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggle = document.getElementById("menu-toggle");
+      const menu = document.getElementById("mobile-menu");
+      const closeBtn = document.getElementById("close-menu");
+      const overlay = document.getElementById("overlay");
+
+      const openMenu = () => menu.classList.remove("hidden");
+      const closeMenu = () => menu.classList.add("hidden");
+
+      toggle?.addEventListener("click", openMenu);
+      closeBtn?.addEventListener("click", closeMenu);
+      overlay?.addEventListener("click", closeMenu);
+    });
+  </script>
+</nav>
