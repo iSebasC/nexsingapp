@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Header/Navbar.astro";
+import ProyectosCards from "../components/Proyectos/Card/ProyectosCards.tsx";
+---
+
+<Layout>
+  <Navbar />
+
+  <section
+    class="relative px-6 pt-36 pb-24 mb-20 bg-[url('/vector/grid.svg')] bg-cover bg-center text-center"
+  >
+    <div class="max-w-4xl mx-auto z-10 relative">
+      <h1 class="text-5xl md:text-6xl font-bold text-[#020D3B] mb-4">
+        Proyectos Destacados
+      </h1>
+      <p class="text-gray-600 text-sm">
+        <a href="/" class="text-[#1864EE] hover:underline">Inicio</a>
+        <span class="mx-1">›</span>
+        <span class="text-[#1864EE] font-semibold">Proyectos Destacados</span>
+      </p>
+    </div>
+    <!-- Capa opcional para mejorar la legibilidad -->
+    <div class="absolute inset-0 bg-white/70 backdrop-blur-[1px] z-0"></div>
+  </section>
+
+  <!-- Grid de proyectos -->
+  <section class="px-6 pb-24">
+    <ProyectosCards client:load />
+  </section>
+</Layout>

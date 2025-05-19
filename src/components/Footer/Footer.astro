@@ -1,0 +1,87 @@
+---
+// Imports
+import GroupFooterNav from "../blocks/GroupFooterNav.astro";
+import Container from "../shared/Container.astro";
+import FooterNav from "../shared/FooterNav.astro";
+import Paragraph from "../shared/Paragraph.astro";
+
+const footerNav1 = [
+  { itemText: "Marketing", itemLink: "#" },
+  { itemText: "Analítica", itemLink: "#" },
+  { itemText: "Comercio", itemLink: "#" },
+  { itemText: "Insights", itemLink: "#" }
+];
+
+const footerSupport = [
+  { itemText: "Precios", itemLink: "#" },
+  { itemText: "Guías", itemLink: "#" },
+  { itemText: "FAQ", itemLink: "#" },
+  { itemText: "Contacto", itemLink: "#" }
+];
+
+const footerCompany = [
+  { itemText: "Nosotros", itemLink: "/about" },
+  { itemText: "Blog", itemLink: "#" },
+  { itemText: "Trabajos", itemLink: "#" },
+  { itemText: "Partners", itemLink: "#" }
+];
+
+const footerLegal = [
+  { itemText: "Privacidad", itemLink: "#" },
+  { itemText: "Términos", itemLink: "#" }
+];
+---
+
+<footer class="bg-gradient-to-tr from-gray-100 to-gray-200 dark:from-gray-900 pt-20 rounded-t-3xl mt-16">
+  <Container className="relative pb-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Logo y descripción -->
+      <div>
+        <a href="/" class="flex items-center gap-3 mb-4">
+          <img src="/nexsign.png" alt="Logo NexSign" class="w-8 h-8 dark:hidden" />
+          <img src="/nexsign_dark.png" alt="Logo NexSign Dark" class="w-8 h-8 hidden dark:block" />
+          <span class="text-lg font-semibold text-heading-1">NexSign</span>
+        </a>
+        <Paragraph className="text-sm text-gray-600 dark:text-gray-400">
+          Impulsamos tu presencia digital con soluciones efectivas.
+        </Paragraph>
+
+        <!-- Redes sociales -->
+        <div class="flex gap-4 mt-6 text-heading-3">
+          <a href="#" aria-label="Twitter" class="hover:text-primary transition">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M5.026 15c6.038..."></path>
+            </svg>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="hover:text-primary transition">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M0 1.146c..."></path>
+            </svg>
+          </a>
+          <a href="#" aria-label="GitHub" class="hover:text-primary transition">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M8 0C3.58..."></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Navegación 1 -->
+      <GroupFooterNav>
+        <FooterNav title="Compañía" navItems={footerCompany} />
+        <FooterNav title="Soluciones" navItems={footerNav1} />
+      </GroupFooterNav>
+
+      <!-- Navegación 2 -->
+      <GroupFooterNav>
+        <FooterNav title="Soporte" navItems={footerSupport} />
+        <FooterNav title="Legales" navItems={footerLegal} />
+      </GroupFooterNav>
+    </div>
+
+    <!-- Línea inferior -->
+    <div class="mt-10 border-t pt-6 border-gray-300 dark:border-neutral-800 text-sm text-center text-gray-500">
+      &copy; {new Date().getFullYear()} NexSign. Hecho con 💻 por NexSign.
+    </div>
+  </Container>
+</footer>

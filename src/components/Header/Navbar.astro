@@ -1,134 +1,154 @@
 ---
-// Navbar.astro
+import BtnLink from "../shared/BtnLink.astro";
+import Container from "../shared/Container.astro";
+import Navitem from "../shared/Navitem.astro";
+
+const navItems = [
+  { href: "#", text: "Inicio" },
+  { href: "#services", text: "Servicios" },
+  { href: "#about-us", text: "Nosotros" },
+  { href: "#project", text: "Proyecto" },
+  { href: "#project", text: "Testimonios" },
+  { href: "#project", text: "Contacto" },
+];
 ---
 
-<nav class="bg-[#020D3B] text-white w-full fixed top-0 left-0 z-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between md:grid md:grid-cols-3 h-20">
+<header
+  class="fixed inset-x-0 top-0 z-50 backdrop-blur-md bg-white/70 dark:bg-neutral-900/70 border-b border-gray-200 dark:border-neutral-800 py-5"
+>
+  <Container>
+    <nav class="w-full flex justify-between items-center gap-6 relative">
       <!-- Logo -->
-      <div class="flex justify-start items-center">
-        <img src="/logo.png" alt="Logo NS" class="h-10 w-auto" />
+      <div class="inline-flex items-center gap-3 min-w-max">
+        <a href="/" class="flex items-center gap-3">
+          <!-- Logo modo claro -->
+          <img
+            src="/nexsign.png"
+            alt="Logo NexSign Light"
+            class="w-10 h-10 object-contain block dark:hidden"
+          />
+          <!-- Logo modo oscuro -->
+          <img
+            src="/nexsign_dark.png"
+            alt="Logo NexSign Dark"
+            class="w-10 h-10 object-contain hidden dark:block"
+          />
+
+          <div class="text-lg font-semibold text-heading-1 dark:text-white">
+            NexSign
+          </div>
+        </a>
       </div>
 
-      <!-- Links escritorio -->
-      <div class="hidden md:flex justify-center space-x-8 font-semibold">
-        <a
-          href="#servicios"
-          class="hover:text-blue-300 transition whitespace-nowrap">Servicios</a
-        >
-        <a
-          href="#nosotros"
-          class="hover:text-blue-300 transition whitespace-nowrap"
-          >Sobre Nosotros</a
-        >
-        <a
-          href="#proyectos"
-          class="hover:text-blue-300 transition whitespace-nowrap">Proyectos</a
-        >
-        <a
-          href="#testimonios"
-          class="hover:text-blue-300 transition whitespace-nowrap"
-          >Testimonios</a
-        >
-        <a
-          href="#contacto"
-          class="hover:text-blue-300 transition whitespace-nowrap">Contacto</a
-        >
-      </div>
+      <!-- Navegación principal (escritorio) -->
+      <ul class="hidden lg:flex gap-8 text-heading-2">
+        {navItems.map((item) => <Navitem {...item} />)}
+      </ul>
 
-      <!-- Idioma y hamburguesa -->
-      <div class="flex justify-end items-center gap-4">
-        <a
-          href="#idioma"
-          class="hidden md:inline font-semibold hover:text-blue-300 transition"
-          >EN</a
-        >
-        <!-- Menú hamburguesa visible solo en móvil -->
+      <!-- Botones a la derecha -->
+      <div class="flex items-center gap-4">
+        <!-- Switch Dark/Light -->
         <button
-          id="menu-toggle"
-          class="md:hidden focus:outline-none"
-          aria-label="Abrir menú"
+          data-switch-theme
+          class="outline-none p-2 border border-box-border rounded-full flex items-center justify-center"
         >
+          <!-- Luna (modo oscuro) -->
           <svg
-            class="w-6 h-6 text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6 hidden dark:block text-white"
             fill="none"
-            stroke="currentColor"
-            stroke-width="2"
             viewBox="0 0 24 24"
+            stroke="currentColor"
           >
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
-              d="M4 6h16M4 12h16M4 18h16"></path>
+              d="M21.75 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
+            ></path>
+          </svg>
+          <!-- Sol (modo claro) -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6 dark:hidden text-[#020D3B]"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 3v2m6.364.364l-1.414 1.414M21 12h-2M18.364 18.364l-1.414-1.414M12 21v-2m-6.364-.364l1.414-1.414M3 12h2m-.364-6.364l1.414 1.414M12 7a5 5 0 100 10 5 5 0 000-10z"
+            ></path>
           </svg>
         </button>
-      </div>
-    </div>
-  </div>
 
-  <!-- Menú móvil -->
-  <div id="mobile-menu" class="fixed inset-0 z-50 hidden">
-    <div class="flex h-full">
-      <!-- Panel lateral -->
-      <div
-        class="w-3/4 max-w-xs bg-white text-black p-6 pt-4 space-y-4 shadow-md relative"
-      >
-        <!-- Botón cerrar (pegado en la esquina) -->
+        <!-- Botón Get Started -->
+        <BtnLink
+          text="Get Started"
+          href="#cta"
+          className="w-max"
+          variant="primary"
+        />
+
+        <!-- Menú hamburguesa móvil con SVG dinámico -->
         <button
-          id="close-menu"
-          class="absolute top-2 right-2 bg-[#020D3B] text-white rounded w-6 h-6 flex items-center justify-center text-sm font-bold"
-          aria-label="Cerrar menú"
+          data-toggle-nav
+          data-open-nav="false"
+          class="outline-none w-8 h-8 flex items-center justify-center lg:hidden relative"
         >
-          ✕
+          <!-- Icono: Abrir -->
+          <svg
+            data-icon-open
+            class="absolute inset-0 w-full h-full transition-opacity duration-200 ease-in-out text-heading-2 block"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3 12H21M3 6H21M9 18H21"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+
+          <!-- Icono: Cerrar -->
+          <svg
+            data-icon-close
+            class="absolute inset-0 w-full h-full transition-opacity duration-200 ease-in-out opacity-0 pointer-events-none text-heading-2"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18 6L6 18M6 6L18 18"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+
+          <span class="sr-only">Toggle navigation</span>
         </button>
-
-        <!-- Enlaces -->
-        <a
-          href="#servicios"
-          class="block font-semibold hover:bg-gray-100 px-4 py-2 rounded transition"
-          >Servicios</a
-        >
-        <a
-          href="#nosotros"
-          class="block font-semibold hover:bg-gray-100 px-4 py-2 rounded transition"
-          >Sobre Nosotros</a
-        >
-        <a
-          href="#proyectos"
-          class="block font-semibold hover:bg-gray-100 px-4 py-2 rounded transition"
-          >Proyectos</a
-        >
-        <a
-          href="#testimonios"
-          class="block font-semibold hover:bg-gray-100 px-4 py-2 rounded transition"
-          >Testimonios</a
-        >
-        <a
-          href="#contacto"
-          class="block font-semibold hover:bg-gray-100 px-4 py-2 rounded transition"
-          >Contacto</a
-        >
       </div>
+    </nav>
 
-      <!-- Overlay oscuro -->
-      <div id="overlay" class="flex-1 bg-black bg-opacity-50"></div>
+    <!-- Menú móvil desplegable -->
+    <div
+      data-navbar
+      class="lg:hidden overflow-hidden transition-all duration-300 h-0 bg-white dark:bg-neutral-900 absolute top-full left-0 right-0 z-40"
+    >
+      <ul class="flex flex-col gap-6 p-6 text-heading-2">
+        {navItems.map((item) => <Navitem {...item} />)}
+      </ul>
     </div>
-  </div>
 
-  <!-- Script toggle -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const toggle = document.getElementById("menu-toggle");
-      const menu = document.getElementById("mobile-menu");
-      const closeBtn = document.getElementById("close-menu");
-      const overlay = document.getElementById("overlay");
-
-      const openMenu = () => menu.classList.remove("hidden");
-      const closeMenu = () => menu.classList.add("hidden");
-
-      toggle?.addEventListener("click", openMenu);
-      closeBtn?.addEventListener("click", closeMenu);
-      overlay?.addEventListener("click", closeMenu);
-    });
-  </script>
-</nav>
+    <!-- Fondo oscuro detrás del menú -->
+    <div
+      data-nav-overlay
+      data-is-visible="false"
+      class="fixed inset-0 z-30 bg-black/50 hidden"
+    >
+    </div>
+  </Container>
+</header>

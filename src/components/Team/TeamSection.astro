@@ -1,0 +1,60 @@
+---
+import { TeamCard } from "./TeamCard"
+import { Button } from "@/components/ui/button"
+
+const participantes = [
+  {
+    name: "Sebastian Cabrera A",
+    role: "Desarrollador Web",
+    image: "/nosotros/sebastian.png",
+    social: ["linkedin", "instagram"]
+  },
+  {
+    name: "Julio Cruz",
+    role: "Desarrollador Web",
+    image: "/nosotros/julio.png",
+    social: ["facebook", "instagram"]
+  }
+]
+---
+
+<section id="participantes" class="py-20 px-4 md:px-8 lg:px-20 bg-white">
+  <div class="max-w-6xl mx-auto font-inter">
+
+    <!-- Badge -->
+    <div class="inline-block rounded-full px-4 py-1 text-sm font-medium bg-[#F6F3FE] mb-6">
+      <span class="text-[#020D3B] font-black">PARTICI</span><span class="text-[#1864EE] font-black">PANTES</span>
+    </div>
+
+    <!-- Título -->
+    <h2 class="text-2xl md:text-3xl font-extrabold text-[#020D3B] mb-2">
+      Conoce a nuestros miembros del equipo
+    </h2>
+
+    <p class="text-gray-500 text-base mb-12 max-w-xl leading-relaxed">
+      Nos enorgullece trabajar juntos en la creación de experiencias digitales únicas.
+    </p>
+
+    <!-- Cards: CENTRADAS -->
+    <div class="flex flex-wrap justify-center gap-6">
+      {participantes.map((p, idx) => (
+        <TeamCard key={idx} {...p} />
+      ))}
+    </div>
+
+    <!-- Botón centrado -->
+    <div class="mt-12 text-center">
+      <a href="#contacto" class="relative inline-block group w-fit">
+        <Button
+          className="relative overflow-hidden text-white font-semibold px-6 py-2 rounded-full bg-[#1864EE] transition-colors duration-300 group"
+        >
+          <span class="absolute inset-0 rounded-md bg-[#020D3B] scale-0 group-hover:scale-100 transition-transform duration-500 ease-in-out origin-left z-0"></span>
+          <span class="relative z-10">
+            Ver más detalles
+            <span>🡢</span>
+          </span>
+        </Button>
+      </a>
+    </div>
+  </div>
+</section>

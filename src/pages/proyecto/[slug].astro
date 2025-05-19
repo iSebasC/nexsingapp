@@ -1,0 +1,117 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Header/Navbar.astro";
+import { proyectos } from "../../data/proyectosData";
+
+export async function getStaticPaths() {
+  return proyectos.map((p) => ({
+    params: { slug: p.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const proyecto = proyectos.find((p) => p.slug === slug);
+
+if (!proyecto) {
+  throw new Error(`Proyecto no encontrado para slug: ${slug}`);
+}
+---
+
+<Layout>
+  <!-- HERO DETALLADO -->
+  <section class="relative pt-40 pb-32 overflow-hidden z-0">
+    <div class="text-center py-10">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-[#020d3b] mb-6">
+        {proyecto.titulo}
+      </h1>
+
+      <!-- Breadcrumb -->
+      <div class="inline-flex items-center gap-2 px-6 py-2 border-2 border-[#1864EE] text-sm text-[#020d3b] rounded-full font-medium shadow-sm hover:bg-[#1864ee]/10 transition">
+        <a href="/" class="text-[#1864EE] hover:text-[#020d3b]">Inicio</a>
+        <span class="text-[#1864EE]">›</span>
+        <a href="/proyectos" class="text-[#1864EE] hover:text-[#020d3b]">Proyectos</a>
+        <span class="text-[#1864EE]">›</span>
+        <span class="font-bold">{proyecto.titulo}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <section class="px-6 pt-10 pb-32 bg-white">
+    <div class="max-w-6xl mx-auto space-y-16">
+      
+      <!-- Header: Info del Proyecto + Imagen -->
+      <div class="space-y-8">
+        <!-- Header superior -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+          <h2 class="text-3xl font-bold text-[#020d3b]">{proyecto.titulo}</h2>
+  
+          <div class="text-sm text-right text-[#020d3b] space-y-1">
+            <p><span class="font-semibold">Cliente:</span> {proyecto.cliente}</p>
+            <p><span class="font-semibold">Año:</span> {proyecto.año}</p>
+            {proyecto.autor && (
+              <p><span class="font-semibold">Autor:</span> {proyecto.autor}</p>
+            )}
+          </div>
+        </div>
+  
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-3">
+          {proyecto.stack?.map((tag) => (
+            <span class="px-4 py-1 text-sm border border-[#1864EE] text-[#1864EE] rounded-full">
+              {tag}
+            </span>
+          ))}
+        </div>
+  
+        <!-- Imagen -->
+        <img src={proyecto.imagen} alt={proyecto.titulo} class="rounded-xl border border-gray-100 shadow bg-white p-6 w-full max-h-80 object-contain" />
+      </div>
+  
+      <!-- Overview -->
+      <div>
+        <h2 class="text-2xl font-bold text-[#020d3b] mb-4">Overview</h2>
+        <div class="grid md:grid-cols-2 gap-8 text-gray-700 leading-relaxed text-[16px]">
+          <p>{proyecto.descripcion}</p>
+          <p>
+            Este proyecto fue desarrollado bajo altos estándares UX/UI y de rendimiento, optimizando la experiencia del usuario final.
+          </p>
+        </div>
+      </div>
+  
+      <!-- Resultados -->
+      <div>
+        <h2 class="text-2xl font-bold text-[#020d3b] mb-4">Resultados del Proyecto</h2>
+        <ul class="grid md:grid-cols-2 gap-y-3 text-gray-700 text-[15px] pl-4 list-disc marker:text-[#1864EE]">
+          {proyecto.resultados.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+  
+      <!-- KPIs -->
+      <div class="space-y-6 pt-4">
+        <div>
+          <div class="flex justify-between text-sm font-semibold text-[#020d3b] mb-1">
+            <span>Diseño UI</span>
+            <span>86%</span>
+          </div>
+          <div class="w-full h-2 bg-gray-200 rounded-full">
+            <div class="h-2 bg-[#1864EE] rounded-full" style="width: 86%;"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm font-semibold text-[#020d3b] mb-1">
+            <span>Performance</span>
+            <span>96%</span>
+          </div>
+          <div class="w-full h-2 bg-gray-200 rounded-full">
+            <div class="h-2 bg-[#1864EE] rounded-full" style="width: 96%;"></div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+  
+</Layout>

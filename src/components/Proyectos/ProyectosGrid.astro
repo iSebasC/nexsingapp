@@ -1,0 +1,50 @@
+---
+import ProyectoCarousel from "./ProyectoCarousel.tsx";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+---
+
+<section id="proyectos" class="py-20 px-4 md:px-8 lg:px-20 bg-white">
+  <div class="max-w-6xl mx-auto flex flex-col items-start text-left">
+    <!-- Encabezado -->
+    <div class="mb-12">
+      <!-- Badge -->
+      <div
+        class="inline-block rounded-full px-4 py-1 text-sm font-medium bg-[#F6F3FE] mb-3"
+      >
+        <span class="text-[#020D3B] font-black">PRO</span><span
+          class="text-[#1864EE] font-black">YECTOS</span
+        >
+      </div>
+
+      <!-- Subtítulo -->
+      <p
+        class="text-[#2563eb] italic border-l-4 border-[#2563eb] pl-4 max-w-xl"
+      >
+        Nuestro trabajo habla por nosotros
+      </p>
+    </div>
+
+    <!-- Carousel de proyectos -->
+    <div class="w-full overflow-hidden">
+      <ProyectoCarousel client:visible />
+    </div>
+    
+    <!-- Botón -->
+    <div class="w-full flex justify-center mt-12">
+      <a href="/proyectos" class="inline-block">
+        <button
+          class="relative overflow-hidden text-white font-semibold px-6 py-2 rounded-full bg-[#1864EE] transition-colors duration-300 group"
+        >
+          <!-- Fondo animado (círculo oscuro) -->
+          <span
+            class="absolute inset-0 rounded-full bg-[#020D3B] scale-0 group-hover:scale-100 transition-transform duration-500 ease-in-out origin-left z-0"
+          ></span>
+
+          <!-- Texto encima -->
+          <span class="relative z-10">VER MÁS PROYECTOS</span>
+        </button>
+      </a>
+    </div>
+  </div>
+</section>

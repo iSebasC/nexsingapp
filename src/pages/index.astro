@@ -1,8 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Header/Navbar.astro';
 import Hero from '../components/Hero/HeroSection.astro';
 import Servicios from '../components/Servicios/ServiciosGrid.astro';
+import Nosotros from '../components/Nosotros/NosotrosSection.astro';
+import Proyectos from '../components/Proyectos/ProyectosGrid.astro';
+import Team from '../components/team/TeamSection.astro';
 import "../style/global.css";
 
 
@@ -10,8 +12,10 @@ import "../style/global.css";
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-  <Navbar />
+<Layout title="Nexsing - Soluciones de Software">
   <Hero />
   <Servicios />
+  <Nosotros />
+  <Team />
+  <Proyectos />
 </Layout>
