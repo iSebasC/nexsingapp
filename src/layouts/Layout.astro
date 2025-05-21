@@ -36,7 +36,33 @@ const { title } = Astro.props;
 
     <!-- Favicon y fuentes -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Conexión temprana a los servidores de Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<!-- Precarga del CSS (mejora la velocidad sin bloquear el render) -->
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
+/>
+
+<!-- Carga el CSS real de forma no bloqueante -->
+<link
+  href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet"
+  media="all"
+  onload="this.media='all'"
+/>
+
+<!-- Fallback si el usuario tiene desactivado JavaScript -->
+<noscript>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+</noscript>
+
 
     <!-- JSON-LD para SEO local -->
     <script type="application/ld+json">
