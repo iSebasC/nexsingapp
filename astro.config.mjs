@@ -4,11 +4,10 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
+  site: "https://nexsigndev.com",
   integrations: [
     tailwind(),
     react(),
-    sitemap({
-      hostname: "https://nexsigndev.com",
-    }),
+    sitemap(),
   ],
 });
