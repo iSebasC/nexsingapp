@@ -9,7 +9,7 @@ export interface Props {
 const { title } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -18,12 +18,25 @@ const { title } = Astro.props;
 
     <!-- SEO -->
     <title>{title} | NexSign - Diseño Web y SEO en Perú</title>
-    <meta name="description" content="NexSign: Diseño web moderno, código limpio y SEO avanzado. Potencia tu presencia digital sin intermediarios." />
+
+    <!-- 🔐 Verificación Google Search Console -->
+    <meta
+      name="google-site-verification"
+      content="fpFrbendmpQz0HBFD4bGy-GOYbYENIW4P1MLvCFUqms"
+    />
+
+    <meta
+      name="description"
+      content="NexSign: Diseño web moderno, código limpio y SEO avanzado. Potencia tu presencia digital sin intermediarios."
+    />
     <meta name="theme-color" content="#ffffff" />
 
     <!-- OpenGraph -->
     <meta property="og:title" content="{title} | NexSign - Diseño Web y SEO" />
-    <meta property="og:description" content="Impulsa tu negocio con diseño moderno, sin plantillas, y con SEO avanzado. NexSign te lleva más lejos." />
+    <meta
+      property="og:description"
+      content="Impulsa tu negocio con diseño moderno, sin plantillas, y con SEO avanzado. NexSign te lleva más lejos."
+    />
     <meta property="og:image" content="/img/opengraph-preview.jpg" />
     <meta property="og:url" content="https://nexsigndev.com/" />
     <meta property="og:type" content="website" />
@@ -37,32 +50,31 @@ const { title } = Astro.props;
     <!-- Favicon y fuentes -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <!-- Conexión temprana a los servidores de Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-<!-- Precarga del CSS (mejora la velocidad sin bloquear el render) -->
-<link
-  rel="preload"
-  as="style"
-  href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
-/>
+    <!-- Precarga del CSS (mejora la velocidad sin bloquear el render) -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
+    />
 
-<!-- Carga el CSS real de forma no bloqueante -->
-<link
-  href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
-  rel="stylesheet"
-  media="all"
-  onload="this.media='all'"
-/>
+    <!-- Carga el CSS real de forma no bloqueante -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+      media="all"
+      onload="this.media='all'"
+    />
 
-<!-- Fallback si el usuario tiene desactivado JavaScript -->
-<noscript>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
-</noscript>
-
+    <!-- Fallback si el usuario tiene desactivado JavaScript -->
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
     <!-- JSON-LD para SEO local -->
     <script type="application/ld+json">
