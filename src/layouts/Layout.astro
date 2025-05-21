@@ -10,19 +10,51 @@ const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content="AgenceX - SEO Agency website landing page made with ASTROJS and TAILWINDCSS">
-    <title>AgenceX - {title}</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+
+    <!-- SEO -->
+    <title>{title} | NexSign - Diseño Web y SEO en Perú</title>
+    <meta name="description" content="NexSign: Diseño web moderno, código limpio y SEO avanzado. Potencia tu presencia digital sin intermediarios." />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="{title} | NexSign - Diseño Web y SEO" />
+    <meta property="og:description" content="Impulsa tu negocio con diseño moderno, sin plantillas, y con SEO avanzado. NexSign te lleva más lejos." />
+    <meta property="og:image" content="/img/opengraph-preview.jpg" />
+    <meta property="og:url" content="https://nexsigndev.com/" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://nexsigndev.com/" />
+
+    <!-- Favicon y fuentes -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- JSON-LD para SEO local -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org/",
+        "@type": "Organization",
+        "name": "NexSign",
+        "url": "https://nexsigndev.com",
+        "logo": "https://nexsigndev.com/logo.svg",
+        "description": "Agencia especializada en diseño web, código limpio y SEO en Perú.",
+        "sameAs": [
+          "https://www.facebook.com/nexsign",
+          "https://www.linkedin.com/company/nexsign"
+        ]
+      }
+    </script>
   </head>
+
   <body class="overflow-hidden overflow-y-auto bg-body">
     <Navbar />
     <slot />
@@ -32,9 +64,7 @@ const { title } = Astro.props;
   <!-- Scripts agrupados y seguros -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // === THEME SWITCH ===
       const switchTheme = document.querySelector("[data-switch-theme]");
-  
       if (
         localStorage.getItem("appTheme") === "dark" ||
         (!("appTheme" in localStorage) &&
@@ -44,7 +74,7 @@ const { title } = Astro.props;
       } else {
         document.documentElement.classList.remove("dark");
       }
-  
+
       if (switchTheme) {
         switchTheme.addEventListener("click", (e) => {
           e.preventDefault();
@@ -58,31 +88,27 @@ const { title } = Astro.props;
           }
         });
       }
-  
-      // === MOBILE NAV TOGGLE ===
+
       const toggleMenu = document.querySelector("[data-toggle-nav]");
       const navbar = document.querySelector("[data-navbar]");
       const overlayNav = document.querySelector("[data-nav-overlay]");
       const iconOpen = toggleMenu?.querySelector("[data-icon-open]");
       const iconClose = toggleMenu?.querySelector("[data-icon-close]");
-  
+
       if (toggleMenu && navbar && overlayNav) {
         toggleMenu.addEventListener("click", (e) => {
           e.preventDefault();
           const isOpen = toggleMenu.getAttribute("data-open-nav") === "true";
-  
           toggleMenu.setAttribute("data-open-nav", isOpen ? "false" : "true");
           overlayNav.setAttribute("data-is-visible", isOpen ? "false" : "true");
           document.body.classList.toggle("!overflow-y-hidden", !isOpen);
           navbar.style.height = isOpen ? "0px" : `${navbar.scrollHeight}px`;
-  
-          // Toggle SVG icons
           iconOpen?.classList.toggle("opacity-0", !isOpen);
           iconOpen?.classList.toggle("pointer-events-none", !isOpen);
           iconClose?.classList.toggle("opacity-0", isOpen);
           iconClose?.classList.toggle("pointer-events-none", isOpen);
         });
-  
+
         navbar.addEventListener("click", () => {
           toggleMenu.setAttribute("data-open-nav", "false");
           overlayNav.setAttribute("data-is-visible", "false");
@@ -91,7 +117,7 @@ const { title } = Astro.props;
           iconOpen?.classList.remove("opacity-0", "pointer-events-none");
           iconClose?.classList.add("opacity-0", "pointer-events-none");
         });
-  
+
         overlayNav.addEventListener("click", () => {
           toggleMenu.setAttribute("data-open-nav", "false");
           overlayNav.setAttribute("data-is-visible", "false");
@@ -103,7 +129,6 @@ const { title } = Astro.props;
       }
     });
   </script>
-  
 </html>
 
 <style is:global>
@@ -119,12 +144,11 @@ const { title } = Astro.props;
   }
 
   .dark {
-    --color-bg: 39 39 46;     /* Secciones: #27272e */
-    --hero-bg: 33 33 33;      /* Hero: #212121 */ 
+    --color-bg: 39 39 46;
+    --hero-bg: 33 33 33;
     --color-box: 17 24 39;
     --box-border: 243 244 246 / 0.1;
     --box-sd: transparent;
-
     --heading-1: 255 255 255;
     --heading-2: 243 244 246;
     --heading-3: 209 213 219;
