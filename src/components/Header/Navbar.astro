@@ -4,12 +4,12 @@ import Container from "../shared/Container.astro";
 import Navitem from "../shared/Navitem.astro";
 
 const navItems = [
-  { href: "#", text: "Inicio" },
+  { href: "#inicio", text: "Inicio" },
   { href: "#services", text: "Servicios" },
-  { href: "#about-us", text: "Nosotros" },
-  { href: "#project", text: "Proyecto" },
-  { href: "#project", text: "Testimonios" },
-  { href: "#project", text: "Contacto" },
+  { href: "#nosotros", text: "Nosotros" },
+  { href: "#proyectos", text: "Proyectos" },
+  { href: "#testimonios", text: "Testimonios" },
+  { href: "#contacto", text: "Contacto" },
 ];
 ---
 
@@ -84,8 +84,8 @@ const navItems = [
 
         <!-- Botón Get Started -->
         <BtnLink
-          text="Get Started"
-          href="#cta"
+          text="Empezar"
+          href="#contacto"
           className="w-max"
           variant="primary"
         />
@@ -152,3 +152,80 @@ const navItems = [
     </div>
   </Container>
 </header>
+
+<script>
+  // Configurar scroll suave para todos los enlaces del navbar
+  document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('a[href^="#"]');
+    const mobileNavToggle = document.querySelector('[data-toggle-nav]');
+    const mobileNav = document.querySelector('[data-navbar]') as HTMLElement;
+    const navOverlay = document.querySelector('[data-nav-overlay]') as HTMLElement;
+
+    // Manejar scroll suave
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e: Event) {
+        const target = e.currentTarget as HTMLAnchorElement;
+        const href = target.getAttribute('href');
+        
+        // Si es solo "#", ir al inicio de la página
+        if (href === '#') {
+          e.preventDefault();
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+          return;
+        }
+
+        // Para otros enlaces con ID
+        if (href) {
+          const targetId = href.substring(1);
+          const targetElement = document.getElementById(targetId);
+          
+          if (targetElement) {
+            e.preventDefault();
+            
+            // Obtener la altura del header fijo
+            const header = document.querySelector('header') as HTMLElement;
+            const headerHeight = header ? header.offsetHeight : 80;
+            
+            // Calcular la posición con offset para el header fijo
+            const targetPosition = targetElement.offsetTop - headerHeight - 20;
+            
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+
+            // Cerrar el menú móvil si está abierto
+            if (mobileNav && mobileNavToggle) {
+              const isOpen = mobileNavToggle.getAttribute('data-open-nav') === 'true';
+              if (isOpen) {
+                closeMobileNav();
+              }
+            }
+          }
+        }
+      });
+    });
+
+    // Función para cerrar el menú móvil
+    function closeMobileNav() {
+      if (mobileNavToggle && mobileNav && navOverlay) {
+        mobileNavToggle.setAttribute('data-open-nav', 'false');
+        mobileNav.style.height = '0';
+        navOverlay.classList.add('hidden');
+        navOverlay.setAttribute('data-is-visible', 'false');
+
+        // Actualizar iconos
+        const openIcon = mobileNavToggle.querySelector('[data-icon-open]');
+        const closeIcon = mobileNavToggle.querySelector('[data-icon-close]');
+        
+        if (openIcon && closeIcon) {
+          openIcon.classList.remove('opacity-0', 'pointer-events-none');
+          closeIcon.classList.add('opacity-0', 'pointer-events-none');
+        }
+      }
+    }
+  });
+</script>

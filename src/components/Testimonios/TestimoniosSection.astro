@@ -1,0 +1,35 @@
+---
+import TestimonioCard from './TestimonioCard.astro'
+import { useValoraciones } from '../../composables/useValoraciones';
+
+// Obtener valoraciones de la API
+const { obtenerValoraciones } = useValoraciones();
+const testimonios = await obtenerValoraciones();
+---
+
+<section class="bg-white dark:bg-[#27272e] py-20" id="testimonios">
+  <div class="max-w-6xl mx-auto px-4">
+    <!-- Etiqueta decorativa -->
+    <div class="inline-block rounded-full px-4 py-1 text-sm font-medium bg-[#F6F3FE] dark:bg-[#1e293b] mb-4">
+      <span class="text-[#020D3B] dark:text-white font-black">TES<span class="text-[#1864EE] font-black">TIMONIOS</span>
+</span>
+    </div>
+
+    <!-- Título -->
+    <h2 class="text-4xl font-extrabold text-[#020D3B] dark:text-white mb-2">
+      Lo que dicen nuestros <br />
+      clientes satisfechos
+    </h2>
+
+    <!-- Cards -->
+    <div class="mt-10 grid md:grid-cols-2 gap-6">
+      {testimonios.map((testimonio) => (
+        <TestimonioCard
+          nombre_completo={testimonio.nombre_completo}
+          area={testimonio.area}
+          comentario={testimonio.comentario}
+        />
+      ))}
+    </div>
+  </div>
+</section>

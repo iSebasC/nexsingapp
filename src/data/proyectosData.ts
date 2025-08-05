@@ -11,6 +11,7 @@ export interface Proyecto {
   resultados: string[];
   stack?: string[];       // ← NUEVO: tecnologías/herramientas usadas
   autor?: string;         // ← NUEVO: autor del proyecto (opcional)
+  enlaceWeb?: string;     // ← NUEVO: enlace a la web del proyecto (opcional)
 }
 
 
@@ -19,16 +20,19 @@ export const proyectos: Proyecto[] = [
     slug: "hilink-dashboard",
     titulo: "Hilink",
     descripcion:
-      "Sistema de gestión de tareas empresariales que ayuda a equipos a organizar y controlar sus flujos de trabajo de manera eficiente.",
+      "Hilink es una aplicación móvil y plataforma web para senderistas y exploradores de naturaleza. Ofrece mapas offline, planificación de rutas y tecnología de realidad aumentada para guiar a los usuarios incluso sin conexión a internet. La solución está diseñada con un enfoque UX/UI moderno, rendimiento optimizado y funcionalidades enfocadas en seguridad, comunidad y descubrimiento de nuevos destinos.",
     cliente: "Hilink Solutions",
     año: 2024,
     categoria: "Product Design",
     imagen: "/proyectos/4.png",
     resultados: [
-      "Dashboard responsivo con KPIs en tiempo real",
-      "Integración con Google Calendar y Slack",
-      "Diseño centrado en la experiencia del usuario (UX)",
+      "Diseño intuitivo y visualmente atractivo",
+      "Mapas sin conexión para zonas sin cobertura",
+      "Tecnología de realidad aumentada para orientación",
+      "Sección de descubrimiento de nuevas rutas cada mes",
+      "Panel informativo claro para usuarios y administradores"
     ],
+    enlaceWeb: "https://travelhk.netlify.app/"
   },
   {
     slug: "carpio-web",
@@ -51,47 +55,36 @@ export const proyectos: Proyecto[] = [
     slug: "ganahoy-app",
     titulo: "Gana Hoy",
     descripcion:
-      "Aplicación móvil gamificada para promociones y sorteos. Diseñada para incentivar la participación y fidelización de usuarios.",
+      "GanaHoy es una plataforma diseñada para ayudar a los usuarios a gestionar sus ahorros de forma inteligente, segura y personalizada. La aplicación permite crear planes de ahorro según las metas del usuario, controlar los movimientos en tiempo real y garantizar la seguridad con tecnología moderna. Su diseño UX/UI está centrado en la simplicidad y confianza, facilitando la adopción de buenos hábitos financieros.",
     cliente: "Gana Hoy",
     año: 2024,
     categoria: "Product Design",
     imagen: "/proyectos/gana-hoy.png",
     resultados: [
-      "Aplicación Android & iOS con Flutter",
-      "Sistema de recompensas en tiempo real",
-      "Interfaz llamativa, joven y atractiva",
+      "Planes de ahorro personalizados y flexibles",
+      "Gestión y monitoreo fácil desde cualquier lugar",
+      "Seguridad garantizada para datos y transacciones",
+      "Testimonios reales que refuerzan la confianza del usuario",
+      "Sección de preguntas frecuentes para resolver dudas comunes"
     ],
-  },
-  {
-    slug: "goinmuebles-landing",
-    titulo: "Go Inmuebles",
-    descripcion:
-      "Landing Page profesional para inmobiliaria con foco en la presentación clara de propiedades y contacto directo.",
-    cliente: "Go Inmuebles",
-    año: 2023,
-    categoria: "Website Design",
-    imagen: "/proyectos/goinmuebles.png",
-    resultados: [
-      "Diseño adaptable para dispositivos móviles",
-      "Formulario de contacto conectado a CRM",
-      "Mapa interactivo y filtros por zona",
-    ],
+    enlaceWeb: "https://ganahoy.netlify.app/"
   },
   {
     slug: "prestopolis-web",
     titulo: "Prestopolis",
     descripcion:
-      "Plataforma de crowdfunding inmobiliario para conectar inversionistas con proyectos gestionados. Permite crear proyectos, realizar depósitos y administrar inversiones.",
+      "Prestopolis es una plataforma de crowdfunding inmobiliario que conecta inversionistas con proyectos gestionados de forma profesional. Permite crear proyectos, realizar depósitos y administrar inversiones. El desarrollo se realizó bajo altos estándares UX/UI y de rendimiento, garantizando una experiencia intuitiva y eficiente para el usuario final.",
     cliente: "Miguel",
     año: 2024,
     categoria: "Crowdfunding Inmobiliario",
     imagen: "/proyectos/prestopolis.svg",
     resultados: [
-      "Diseño web atractivo y enfocado en inversión",
-      "Panel administrativo para gestores e inversionistas",
-      "Gestión de proyectos, depósitos y estadísticas",
+      "Diseño web atractivo y orientado a inversión",
+      "Gestión integral de proyectos, depósitos y estadísticas",
+      "Panel administrativo para gestores e inversionistas"
     ],
     stack: ["Next.js", "Laravel", "NestJS", "MySQL"],
-    autor: "Sebastian"
+    autor: "Sebastian",
+    enlaceWeb: "https://www.prestopolis.com/plataforma"
   },
 ];

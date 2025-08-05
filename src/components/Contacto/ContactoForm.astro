@@ -1,0 +1,88 @@
+<section id="contacto" class="bg-[#f9f9fc] dark:bg-[#1a1a1a] py-20 px-4">
+  <div class="max-w-6xl mx-auto bg-white dark:bg-[#27272e] shadow-xl rounded-2xl p-8 sm:p-12 grid md:grid-cols-2 gap-10 items-start">
+
+    <!-- Columna izquierda -->
+    <div class="space-y-6">
+      <p class="text-sm font-semibold text-[#1864EE]">Ponte en contacto</p>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-[#020D3B] dark:text-white leading-snug">
+        ¿Tienes algún proyecto en mente?
+      </h2>
+      <p class="text-gray-600 dark:text-gray-300">
+        Cuéntanos sobre tu idea y te ayudaremos a desarrollarla. Nuestro equipo está listo para trabajar contigo.
+      </p>
+
+      <!-- Email -->
+      <div class="flex items-center gap-4">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-[#1864EE] text-white">
+          <!-- Icono email -->
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-sm text-gray-500 dark:text-gray-300">Correo 24/7</p>
+          <p class="font-semibold text-[#020D3B] dark:text-white">admdesarrolladoresg@gmail.com</p>
+        </div>
+      </div>
+
+      <!-- Teléfono -->
+      <div class="flex items-center gap-4">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-[#1864EE] text-white">
+          <!-- Icono teléfono -->
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M2 5a2 2 0 012-2h2.6a1 1 0 011 .76l1.2 5.21a1 1 0 01-.29.95l-2.1 2.1a16 16 0 007.6 7.6l2.1-2.1a1 1 0 01.95-.29l5.21 1.2a1 1 0 01.76 1V20a2 2 0 01-2 2h-1C9.16 22 2 14.84 2 6V5z"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-sm text-gray-500 dark:text-gray-300">Ayuda urgente</p>
+          <p class="font-semibold text-[#020D3B] dark:text-white">+51 993106111</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna derecha (formulario) -->
+    <form class="space-y-5">
+      <div>
+        <label for="nombre" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Tu nombre *</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          required
+          class="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-4 py-3 text-sm bg-white dark:bg-[#1e1e24] text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#1864EE]"
+        />
+      </div>
+
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Tu correo *</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          class="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-4 py-3 text-sm bg-white dark:bg-[#1e1e24] text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#1864EE]"
+        />
+      </div>
+
+      <div>
+        <label for="mensaje" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">¿En qué podemos ayudarte?</label>
+        <textarea
+          id="mensaje"
+          name="mensaje"
+          rows="4"
+          class="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-4 py-3 text-sm bg-white dark:bg-[#1e1e24] text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#1864EE]"
+        ></textarea>
+      </div>
+
+      <div>
+        <button
+          type="submit"
+          class="w-full bg-[#1864EE] hover:bg-[#154ecb] transition text-white font-semibold py-3 px-6 rounded-xl text-sm"
+        >
+          Enviar mensaje
+        </button>
+      </div>
+    </form>
+
+  </div>
+</section>

@@ -1,34 +1,16 @@
 ---
 // Imports
-import GroupFooterNav from "../blocks/GroupFooterNav.astro";
 import Container from "../shared/Container.astro";
-import FooterNav from "../shared/FooterNav.astro";
 import Paragraph from "../shared/Paragraph.astro";
 
-const footerNav1 = [
-  { itemText: "Marketing", itemLink: "#" },
-  { itemText: "Analítica", itemLink: "#" },
-  { itemText: "Comercio", itemLink: "#" },
-  { itemText: "Insights", itemLink: "#" },
-];
-
-const footerSupport = [
-  { itemText: "Precios", itemLink: "#" },
-  { itemText: "Guías", itemLink: "#" },
-  { itemText: "FAQ", itemLink: "#" },
-  { itemText: "Contacto", itemLink: "#" },
-];
-
-const footerCompany = [
-  { itemText: "Nosotros", itemLink: "/about" },
-  { itemText: "Blog", itemLink: "#" },
-  { itemText: "Trabajos", itemLink: "#" },
-  { itemText: "Partners", itemLink: "#" },
-];
-
-const footerLegal = [
-  { itemText: "Privacidad", itemLink: "#" },
-  { itemText: "Términos", itemLink: "#" },
+// Mismas opciones que el navbar
+const navItems = [
+  { text: "Inicio", href: "#inicio" },
+  { text: "Servicios", href: "#services" },
+  { text: "Nosotros", href: "#nosotros" },
+  { text: "Proyectos", href: "#proyectos" },
+  { text: "Testimonios", href: "#testimonios" },
+  { text: "Contacto", href: "#contacto" },
 ];
 ---
 
@@ -36,7 +18,7 @@ const footerLegal = [
   class="bg-gradient-to-tr from-gray-100 to-gray-200 dark:from-gray-900 pt-20 rounded-t-3xl mt-16"
 >
   <Container className="relative pb-12">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <!-- Logo y descripción -->
       <div>
         <a href="/" class="flex items-center gap-3 mb-4">
@@ -102,17 +84,22 @@ const footerLegal = [
         </div>
       </div>
 
-      <!-- Navegación 1 -->
-      <GroupFooterNav>
-        <FooterNav title="Compañía" navItems={footerCompany} />
-        <FooterNav title="Soluciones" navItems={footerNav1} />
-      </GroupFooterNav>
-
-      <!-- Navegación 2 -->
-      <GroupFooterNav>
-        <FooterNav title="Soporte" navItems={footerSupport} />
-        <FooterNav title="Legales" navItems={footerLegal} />
-      </GroupFooterNav>
+      <!-- Navegación simplificada -->
+      <div>
+        <h3 class="text-lg font-semibold text-heading-1 mb-4">Navegación</h3>
+        <ul class="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-3">
+          {navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors duration-200"
+              >
+                {item.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
 
     <!-- Línea inferior -->
@@ -123,3 +110,38 @@ const footerLegal = [
     </div>
   </Container>
 </footer>
+
+<script>
+  // Configurar scroll suave para los enlaces del footer
+  document.addEventListener('DOMContentLoaded', function() {
+    const footerLinks = document.querySelectorAll('footer a[href^="#"]');
+
+    footerLinks.forEach(link => {
+      link.addEventListener('click', function(e: Event) {
+        const target = e.currentTarget as HTMLAnchorElement;
+        const href = target.getAttribute('href');
+        
+        if (href) {
+          const targetId = href.substring(1);
+          const targetElement = document.getElementById(targetId);
+          
+          if (targetElement) {
+            e.preventDefault();
+            
+            // Obtener la altura del header fijo
+            const header = document.querySelector('header') as HTMLElement;
+            const headerHeight = header ? header.offsetHeight : 80;
+            
+            // Calcular la posición con offset para el header fijo
+            const targetPosition = targetElement.offsetTop - headerHeight - 20;
+            
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+  });
+</script>

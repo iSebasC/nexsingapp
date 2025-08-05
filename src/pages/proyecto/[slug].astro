@@ -19,17 +19,17 @@ if (!proyecto) {
 
 <Layout>
   <!-- HERO DETALLADO -->
-  <section class="relative pt-40 pb-32 overflow-hidden z-0">
+  <section class="relative pt-40 pb-32 overflow-hidden z-0 bg-white dark:bg-gray-900 transition-colors duration-300">
     <div class="text-center py-10">
-      <h1 class="text-4xl md:text-5xl font-extrabold text-[#020d3b] mb-6">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-[#020d3b] dark:text-white mb-6 transition-colors duration-300">
         {proyecto.titulo}
       </h1>
 
       <!-- Breadcrumb -->
-      <div class="inline-flex items-center gap-2 px-6 py-2 border-2 border-[#1864EE] text-sm text-[#020d3b] rounded-full font-medium shadow-sm hover:bg-[#1864ee]/10 transition">
-        <a href="/" class="text-[#1864EE] hover:text-[#020d3b]">Inicio</a>
+      <div class="inline-flex items-center gap-2 px-6 py-2 border-2 border-[#1864EE] text-sm text-[#020d3b] dark:text-white rounded-full font-medium shadow-sm hover:bg-[#1864ee]/10 dark:hover:bg-[#1864ee]/20 transition-all duration-300">
+        <a href="/" class="text-[#1864EE] hover:text-[#020d3b] dark:hover:text-white transition-colors duration-300">Inicio</a>
         <span class="text-[#1864EE]">›</span>
-        <a href="/proyectos" class="text-[#1864EE] hover:text-[#020d3b]">Proyectos</a>
+        <a href="/proyectos" class="text-[#1864EE] hover:text-[#020d3b] dark:hover:text-white transition-colors duration-300">Proyectos</a>
         <span class="text-[#1864EE]">›</span>
         <span class="font-bold">{proyecto.titulo}</span>
       </div>
@@ -37,16 +37,16 @@ if (!proyecto) {
   </section>
 
   <!-- CONTENIDO PRINCIPAL -->
-  <section class="px-6 pt-10 pb-32 bg-white">
+  <section class="px-6 pt-10 pb-32 bg-white dark:bg-[#27272e] transition-colors duration-300">
     <div class="max-w-6xl mx-auto space-y-16">
       
       <!-- Header: Info del Proyecto + Imagen -->
       <div class="space-y-8">
         <!-- Header superior -->
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-          <h2 class="text-3xl font-bold text-[#020d3b]">{proyecto.titulo}</h2>
+          <h2 class="text-3xl font-bold text-[#020d3b] dark:text-white transition-colors duration-300">{proyecto.titulo}</h2>
   
-          <div class="text-sm text-right text-[#020d3b] space-y-1">
+          <div class="text-sm text-right text-[#020d3b] dark:text-gray-300 space-y-1 transition-colors duration-300">
             <p><span class="font-semibold">Cliente:</span> {proyecto.cliente}</p>
             <p><span class="font-semibold">Año:</span> {proyecto.año}</p>
             {proyecto.autor && (
@@ -58,58 +58,134 @@ if (!proyecto) {
         <!-- Tags -->
         <div class="flex flex-wrap gap-3">
           {proyecto.stack?.map((tag) => (
-            <span class="px-4 py-1 text-sm border border-[#1864EE] text-[#1864EE] rounded-full">
+            <span class="px-4 py-1 text-sm border border-[#1864EE] text-[#1864EE] rounded-full transition-colors duration-300">
               {tag}
             </span>
           ))}
         </div>
   
         <!-- Imagen -->
-        <img src={proyecto.imagen} alt={proyecto.titulo} class="rounded-xl border border-gray-100 shadow bg-white p-6 w-full max-h-80 object-contain" />
+        <img src={proyecto.imagen} alt={proyecto.titulo} class="rounded-xl border border-gray-100 dark:border-gray-700 shadow bg-white dark:bg-gray-800 p-6 w-full max-h-80 object-contain transition-colors duration-300" />
       </div>
   
-      <!-- Overview -->
+      <!-- Resumen del Proyecto -->
       <div>
-        <h2 class="text-2xl font-bold text-[#020d3b] mb-4">Overview</h2>
-        <div class="grid md:grid-cols-2 gap-8 text-gray-700 leading-relaxed text-[16px]">
+        <h2 class="text-2xl font-bold text-[#020d3b] dark:text-white mb-4 transition-colors duration-300">Resumen del Proyecto</h2>
+        <div class="grid md:grid-cols-2 gap-8 text-gray-700 dark:text-gray-300 leading-relaxed text-[16px] transition-colors duration-300">
           <p>{proyecto.descripcion}</p>
           <p>
             Este proyecto fue desarrollado bajo altos estándares UX/UI y de rendimiento, optimizando la experiencia del usuario final.
           </p>
         </div>
+        
+        <!-- Botón Ver Plataforma para proyectos con enlace -->
+        {proyecto.enlaceWeb && (
+          <div class="mt-6">
+            <a
+              href={proyecto.enlaceWeb}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-6 py-3 bg-[#1864EE] text-white font-medium rounded-full hover:bg-[#020D3B] transition-colors duration-300 shadow-lg hover:shadow-xl"
+            >
+              {proyecto.slug === "prestopolis-web" ? "Ver Plataforma" : "Ver Demo"}
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+              </svg>
+            </a>
+          </div>
+        )}
       </div>
   
       <!-- Resultados -->
       <div>
-        <h2 class="text-2xl font-bold text-[#020d3b] mb-4">Resultados del Proyecto</h2>
-        <ul class="grid md:grid-cols-2 gap-y-3 text-gray-700 text-[15px] pl-4 list-disc marker:text-[#1864EE]">
+        <h2 class="text-2xl font-bold text-[#020d3b] dark:text-white mb-4 transition-colors duration-300">Resultados del Proyecto</h2>
+        <ul class="grid md:grid-cols-2 gap-y-3 text-gray-700 dark:text-gray-300 text-[15px] pl-4 list-disc marker:text-[#1864EE] transition-colors duration-300">
           {proyecto.resultados.map((item) => (
             <li>{item}</li>
           ))}
         </ul>
       </div>
   
-      <!-- KPIs -->
-      <div class="space-y-6 pt-4">
-        <div>
-          <div class="flex justify-between text-sm font-semibold text-[#020d3b] mb-1">
-            <span>Diseño UI</span>
-            <span>86%</span>
-          </div>
-          <div class="w-full h-2 bg-gray-200 rounded-full">
-            <div class="h-2 bg-[#1864EE] rounded-full" style="width: 86%;"></div>
-          </div>
+      <!-- KPIs - Para Prestopolis, Hilink y Gana Hoy -->
+      {(proyecto.slug === "prestopolis-web" || proyecto.slug === "hilink-dashboard" || proyecto.slug === "ganahoy-app") && (
+        <div class="space-y-6 pt-4">
+          {proyecto.slug === "prestopolis-web" && (
+            <>
+              <div>
+                <div class="flex justify-between text-sm font-semibold text-[#020d3b] dark:text-white mb-1 transition-colors duration-300">
+                  <span>Diseño UI</span>
+                  <span>86%</span>
+                </div>
+                <div class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full transition-colors duration-300">
+                  <div class="h-2 bg-[#1864EE] rounded-full" style="width: 86%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm font-semibold text-[#020d3b] dark:text-white mb-1 transition-colors duration-300">
+                  <span>Performance</span>
+                  <span>96%</span>
+                </div>
+                <div class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full transition-colors duration-300">
+                  <div class="h-2 bg-[#1864EE] rounded-full" style="width: 96%;"></div>
+                </div>
+              </div>
+            </>
+          )}
+          {proyecto.slug === "hilink-dashboard" && (
+            <>
+              <div>
+                <div class="flex justify-between text-sm font-semibold text-[#020d3b] dark:text-white mb-1 transition-colors duration-300">
+                  <span>Diseño UI</span>
+                  <span>92%</span>
+                </div>
+                <div class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full transition-colors duration-300">
+                  <div class="h-2 bg-[#1864EE] rounded-full" style="width: 92%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm font-semibold text-[#020d3b] dark:text-white mb-1 transition-colors duration-300">
+                  <span>Performance</span>
+                  <span>94%</span>
+                </div>
+                <div class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full transition-colors duration-300">
+                  <div class="h-2 bg-[#1864EE] rounded-full" style="width: 94%;"></div>
+                </div>
+              </div>
+            </>
+          )}
+          {proyecto.slug === "ganahoy-app" && (
+            <>
+              <div>
+                <div class="flex justify-between text-sm font-semibold text-[#020d3b] dark:text-white mb-1 transition-colors duration-300">
+                  <span>Diseño UI</span>
+                  <span>90%</span>
+                </div>
+                <div class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full transition-colors duration-300">
+                  <div class="h-2 bg-[#1864EE] rounded-full" style="width: 90%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm font-semibold text-[#020d3b] dark:text-white mb-1 transition-colors duration-300">
+                  <span>Usabilidad</span>
+                  <span>93%</span>
+                </div>
+                <div class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full transition-colors duration-300">
+                  <div class="h-2 bg-[#1864EE] rounded-full" style="width: 93%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm font-semibold text-[#020d3b] dark:text-white mb-1 transition-colors duration-300">
+                  <span>Conversión estimada</span>
+                  <span>82%</span>
+                </div>
+                <div class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full transition-colors duration-300">
+                  <div class="h-2 bg-[#1864EE] rounded-full" style="width: 82%;"></div>
+                </div>
+              </div>
+            </>
+          )}
         </div>
-        <div>
-          <div class="flex justify-between text-sm font-semibold text-[#020d3b] mb-1">
-            <span>Performance</span>
-            <span>96%</span>
-          </div>
-          <div class="w-full h-2 bg-gray-200 rounded-full">
-            <div class="h-2 bg-[#1864EE] rounded-full" style="width: 96%;"></div>
-          </div>
-        </div>
-      </div>
+      )}
   
     </div>
   </section>

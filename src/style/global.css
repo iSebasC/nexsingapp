@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Scroll suave para toda la página */
+html {
+  scroll-behavior: smooth;
+}
+
 @keyframes slideInUp {
   0% {
     opacity: 0;

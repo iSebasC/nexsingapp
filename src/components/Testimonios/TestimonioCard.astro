@@ -1,0 +1,33 @@
+---
+const { nombre_completo, area, comentario, imagen } = Astro.props;
+
+const imagenFinal = imagen || `https://ui-avatars.com/api/?name=${encodeURIComponent(nombre_completo)}&background=F6F3FE&color=020D3B`;
+---
+
+<div class="bg-[#F6F3FE] dark:bg-[#1e293b] p-6 rounded-xl shadow-md relative overflow-hidden transition-colors duration-300">
+  <!-- Comillas decorativas -->
+  <svg
+    class="absolute top-4 right-4 w-6 h-6 text-[#1864EE] dark:text-[#A855F7]"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path d="M7.17 5.59A4.994 4.994 0 005 10v4c0 1.1.9 2 2 2h2v-2H7v-4c0-1.1.9-2 2-2V6c-1.11 0-2.13.46-2.83 1.17zM17.17 5.59A4.994 4.994 0 0015 10v4c0 1.1.9 2 2 2h2v-2h-2v-4c0-1.1.9-2 2-2V6c-1.11 0-2.13.46-2.83 1.17z" />
+  </svg>
+
+  <!-- Avatar + info -->
+  <div class="flex items-center gap-4 mb-3">
+    <img
+      src={imagenFinal}
+      alt={`Foto de ${nombre_completo}`}
+      class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-md"
+    />
+    <div>
+      <h3 class="text-base font-semibold text-[#020D3B] dark:text-white">{nombre_completo}</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-300">{area}</p>
+    </div>
+  </div>
+
+  <!-- Texto del testimonio -->
+  <p class="text-sm text-gray-700 dark:text-gray-200 leading-relaxed">{comentario}</p>
+</div>
