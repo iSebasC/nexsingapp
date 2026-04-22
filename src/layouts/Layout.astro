@@ -1,14 +1,23 @@
 ---
-import WhatsAppWidget from "@/components/WhatsAppWidget.astro";
 import Footer from "../components/Footer/Footer.astro";
 import Navbar from "../components/Header/Navbar.astro";
 
 
 export interface Props {
   title: string;
+  description?: string;
+  canonical?: string;
+  image?: string;
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  description = "NexSign es una startup tecnológica en Perú que desarrolla sitios web, sistemas digitales y soluciones SEO para impulsar negocios.",
+  canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).toString(),
+  image = "https://nexsigndev.com/img/opengraph-preview.jpg",
+} = Astro.props;
+
+const pageTitle = `${title} | NexSign - Startup Tecnologica y Soluciones Digitales`;
 ---
 
 <!doctype html>
@@ -19,7 +28,7 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
 
     <!-- SEO -->
-    <title>{title} | NexSign - Diseño Web y SEO en Perú</title>
+    <title>{pageTitle}</title>
 
     <!-- 🔐 Verificación Google Search Console -->
     <meta
@@ -27,27 +36,27 @@ const { title } = Astro.props;
       content="fpFrbendmpQz0HBFD4bGy-GOYbYENIW4P1MLvCFUqms"
     />
 
-    <meta
-      name="description"
-      content="NexSign: Diseño web moderno, código limpio y SEO avanzado. Potencia tu presencia digital sin intermediarios."
-    />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#050714" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
 
     <!-- OpenGraph -->
-    <meta property="og:title" content="{title} | NexSign - Diseño Web y SEO" />
-    <meta
-      property="og:description"
-      content="Impulsa tu negocio con diseño moderno, sin plantillas, y con SEO avanzado. NexSign te lleva más lejos."
-    />
-    <meta property="og:image" content="/img/opengraph-preview.jpg" />
-    <meta property="og:url" content="https://nexsigndev.com/" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="NexSign" />
+    <meta property="og:locale" content="es_PE" />
     <meta property="og:type" content="website" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://nexsigndev.com/" />
+    <link rel="canonical" href={canonical} />
 
     <!-- Favicon y fuentes -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -81,40 +90,52 @@ const { title } = Astro.props;
     <!-- JSON-LD para SEO local -->
     <script type="application/ld+json">
       {
-        "@context": "https://schema.org/",
-        "@type": "Organization",
-        "name": "NexSign",
-        "url": "https://nexsigndev.com",
-        "logo": "https://nexsigndev.com/logo.svg",
-        "description": "Agencia especializada en diseño web, código limpio y SEO en Perú.",
-        "sameAs": [
-          "https://www.facebook.com/nexsign",
-          "https://www.linkedin.com/company/nexsign"
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://nexsigndev.com/#organization",
+            "name": "NexSign",
+            "alternateName": ["Nexsign", "Nexsingapp"],
+            "url": "https://nexsigndev.com",
+            "logo": "https://nexsigndev.com/logo.svg",
+            "description": "NexSign es una startup tecnologica en Peru enfocada en diseno web, desarrollo de sistemas y posicionamiento SEO para negocios.",
+            "sameAs": [
+              "https://www.facebook.com/nexsign",
+              "https://www.linkedin.com/company/nexsign"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://nexsigndev.com/#website",
+            "url": "https://nexsigndev.com",
+            "name": "NexSign",
+            "description": "Startup tecnologica que crea sitios web, sistemas y soluciones SEO para crecer negocios.",
+            "inLanguage": "es-PE",
+            "publisher": {
+              "@id": "https://nexsigndev.com/#organization"
+            }
+          }
         ]
       }
     </script>
   </head>
 
-  <body class="overflow-hidden overflow-y-auto bg-body">
+  <body class="overflow-hidden overflow-y-auto bg-[#050714]">
     <Navbar />
     <slot />
     <Footer />
-    <WhatsAppWidget />
-     
   </body>
 
   <!-- Scripts agrupados y seguros -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const switchTheme = document.querySelector("[data-switch-theme]");
-      if (
-        localStorage.getItem("appTheme") === "dark" ||
-        (!("appTheme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.add("dark");
-      } else {
+      // Dark mode por defecto — se activa a menos que el usuario haya elegido explícitamente light
+      if (localStorage.getItem("appTheme") === "light") {
         document.documentElement.classList.remove("dark");
+      } else {
+        document.documentElement.classList.add("dark");
       }
 
       if (switchTheme) {
@@ -177,26 +198,28 @@ const { title } = Astro.props;
 </html>
 
 <style is:global>
+  /* Light mode (fallback) */
   :root {
-    --color-bg: 255 255 255;
-    --color-border: 255 255 255;
+    --color-bg: 248 250 252;
+    --color-border: 226 232 240;
     --color-box: 255 255 255;
-    --box-border: 229 231 235;
-    --box-sd: 226 232 240 / 0.5;
-    --heading-1: 23 37 84;
-    --heading-2: 31 41 55;
-    --heading-3: 55 65 81;
+    --box-border: 226 232 240;
+    --box-sd: 148 163 184 / 0.2;
+    --heading-1: 15 23 42;
+    --heading-2: 30 41 59;
+    --heading-3: 71 85 105;
   }
 
+  /* Dark mode – diseño premium dominante */
   .dark {
-    --color-bg: 39 39 46;
-    --hero-bg: 33 33 33;
-    --color-box: 17 24 39;
-    --box-border: 243 244 246 / 0.1;
-    --box-sd: transparent;
-    --heading-1: 255 255 255;
-    --heading-2: 243 244 246;
-    --heading-3: 209 213 219;
+    --color-bg: 5 7 20;
+    --hero-bg: 5 7 20;
+    --color-box: 10 13 26;
+    --box-border: 255 255 255 / 0.08;
+    --box-sd: 99 102 241 / 0.1;
+    --heading-1: 248 250 252;
+    --heading-2: 226 232 240;
+    --heading-3: 148 163 184;
   }
 
   html {

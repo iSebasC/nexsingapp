@@ -1,35 +1,33 @@
 ---
-import TestimonioCard from './TestimonioCard.astro'
+import TestimonioCard from './TestimonioCard.astro';
 import { useValoraciones } from '../../composables/useValoraciones';
 
-// Obtener valoraciones de la API
 const { obtenerValoraciones } = useValoraciones();
-const testimonios = await obtenerValoraciones();
+const raw = await obtenerValoraciones();
+const testimonios = raw.slice(0, 2);
 ---
 
-<section class="bg-white dark:bg-[#27272e] py-20" id="testimonios">
-  <div class="max-w-6xl mx-auto px-4">
-    <!-- Etiqueta decorativa -->
-    <div class="inline-block rounded-full px-4 py-1 text-sm font-medium bg-[#F6F3FE] dark:bg-[#1e293b] mb-4">
-      <span class="text-[#020D3B] dark:text-white font-black">TES<span class="text-[#1864EE] font-black">TIMONIOS</span>
-</span>
-    </div>
+<section id="testimonios" class="py-24 px-6 bg-[#050714] border-t border-white/[0.05]">
+  <div class="max-w-4xl mx-auto">
 
-    <!-- Título -->
-    <h2 class="text-4xl font-extrabold text-[#020D3B] dark:text-white mb-2">
-      Lo que dicen nuestros <br />
-      clientes satisfechos
+    <!-- Cabecera mínima -->
+    <div class="mb-4">
+      <p class="text-xs font-medium text-[#6366f1] uppercase tracking-[0.15em]">Clientes</p>
+    </div>
+    <h2 class="text-3xl md:text-4xl font-black text-white tracking-tight mb-0 leading-tight">
+      Lo que dicen
     </h2>
 
-    <!-- Cards -->
-    <div class="mt-10 grid md:grid-cols-2 gap-6">
-      {testimonios.map((testimonio) => (
+    <!-- Testimonios -->
+    <div class="mt-2">
+      {testimonios.map(t => (
         <TestimonioCard
-          nombre_completo={testimonio.nombre_completo}
-          area={testimonio.area}
-          comentario={testimonio.comentario}
+          nombre_completo={t.nombre_completo}
+          area={t.area}
+          comentario={t.comentario}
         />
       ))}
     </div>
+
   </div>
 </section>

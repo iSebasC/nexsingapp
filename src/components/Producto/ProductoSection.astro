@@ -1,0 +1,162 @@
+---
+const features = [
+  {
+    icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
+    title: "Datos en tiempo real",
+    desc: "Dashboards que muestran el estado de tu negocio al instante.",
+  },
+  {
+    icon: "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z",
+    title: "Gestión de clientes (CRM)",
+    desc: "Centraliza contactos, seguimientos y oportunidades de venta.",
+  },
+  {
+    icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4",
+    title: "Flujos automatizados",
+    desc: "Automatiza tareas repetitivas y libera tiempo para lo importante.",
+  },
+  {
+    icon: "M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z",
+    title: "Reportes inteligentes",
+    desc: "Métricas y reportes exportables para tomar decisiones basadas en datos.",
+  },
+];
+---
+
+<section class="relative py-16 md:py-28 px-5 md:px-6 overflow-hidden bg-[#050714]">
+
+  <!-- Separador -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+
+  <!-- Orb de fondo -->
+  <div class="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-violet-600 opacity-8 blur-[160px] pointer-events-none"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+      <!-- ── Columna izquierda: texto ── -->
+      <div>
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm text-violet-300 mb-6">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+          Más que solo webs
+        </div>
+
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-6">
+          Sistemas que hacen<br />
+          <span class="gradient-text-brand">operar tu negocio</span><br />
+          más eficientemente
+        </h2>
+
+        <p class="text-gray-400 text-base leading-relaxed mb-8 max-w-lg">
+          Construimos herramientas digitales personalizadas que automatizan, centralizan y
+          escalan tu negocio. Desde CRMs hasta paneles de control completos.
+        </p>
+
+        <!-- Lista de features -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+          {features.map((feature) => (
+            <div class="flex gap-3">
+              <div class="w-9 h-9 rounded-lg bg-white/[0.05] border border-white/[0.08] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={feature.icon}/>
+                </svg>
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-white mb-1">{feature.title}</h4>
+                <p class="text-xs text-gray-500 leading-relaxed">{feature.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <a
+          href="#contacto"
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-[#0E037F] to-indigo-600 text-white font-semibold text-sm hover:from-indigo-700 hover:to-violet-600 transition-all duration-300 shadow-lg shadow-indigo-900/40 hover:-translate-y-0.5"
+        >
+          Solicitar demo gratuita
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- ── Columna derecha: UI preview ── -->
+      <div class="relative hidden lg:block">
+        <div class="absolute inset-0 bg-indigo-600/15 blur-[60px] rounded-3xl"></div>
+
+        <div class="relative glass rounded-2xl border border-white/10 overflow-hidden">
+
+          <!-- Sidebar + contenido -->
+          <div class="flex" style="min-height: 420px;">
+
+            <!-- Sidebar -->
+            <div class="w-48 border-r border-white/[0.06] bg-black/20 p-4 flex flex-col gap-1">
+              <div class="text-[10px] text-gray-600 uppercase tracking-wider mb-2 px-2">Menú</div>
+              {[
+                { label: "Dashboard", icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6", active: true },
+                { label: "Clientes", icon: "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z", active: false },
+                { label: "Ventas", icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z", active: false },
+                { label: "Reportes", icon: "M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z", active: false },
+                { label: "Config.", icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z", active: false },
+              ].map((item) => (
+                <div class={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${item.active ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/20' : 'text-gray-600 hover:text-gray-400'}`}>
+                  <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d={item.icon}/>
+                  </svg>
+                  {item.label}
+                </div>
+              ))}
+            </div>
+
+            <!-- Área principal -->
+            <div class="flex-1 p-5 overflow-hidden">
+              <!-- Header -->
+              <div class="flex items-center justify-between mb-5">
+                <div>
+                  <h4 class="text-sm font-bold text-white">Dashboard general</h4>
+                  <p class="text-[10px] text-gray-600">Actualizado hace 2 min</p>
+                </div>
+                <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-400/10 border border-emerald-400/20">
+                  <div class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></div>
+                  <span class="text-[10px] text-emerald-400 font-medium">En vivo</span>
+                </div>
+              </div>
+
+              <!-- Mini stats -->
+              <div class="grid grid-cols-2 gap-3 mb-4">
+                {[
+                  { label: "Nuevos clientes", value: "28", delta: "+12%" },
+                  { label: "Ingresos hoy", value: "S/1,840", delta: "+8%" },
+                ].map(s => (
+                  <div class="bg-white/[0.04] border border-white/[0.05] rounded-xl p-3">
+                    <div class="text-[10px] text-gray-500 mb-1">{s.label}</div>
+                    <div class="text-lg font-black text-white">{s.value}</div>
+                    <div class="text-[10px] text-emerald-400 mt-0.5">{s.delta}</div>
+                  </div>
+                ))}
+              </div>
+
+              <!-- Tabla minimal -->
+              <div class="bg-white/[0.03] border border-white/[0.05] rounded-xl p-3">
+                <div class="text-[10px] text-gray-500 mb-3 uppercase tracking-wider">Clientes recientes</div>
+                {[
+                  { name: "Empresa Alfa", status: "Activo", amount: "S/2,400" },
+                  { name: "Beta Corp.", status: "Pendiente", amount: "S/800" },
+                  { name: "Gamma SAC", status: "Activo", amount: "S/3,200" },
+                ].map(c => (
+                  <div class="flex items-center justify-between py-2 border-b border-white/[0.04] last:border-0">
+                    <span class="text-[11px] text-gray-400">{c.name}</span>
+                    <span class={`text-[10px] px-1.5 py-0.5 rounded-md font-medium ${c.status === 'Activo' ? 'bg-emerald-400/10 text-emerald-400' : 'bg-amber-400/10 text-amber-400'}`}>{c.status}</span>
+                    <span class="text-[11px] text-white font-semibold">{c.amount}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

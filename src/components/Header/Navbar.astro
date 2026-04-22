@@ -1,231 +1,174 @@
 ---
-import BtnLink from "../shared/BtnLink.astro";
-import Container from "../shared/Container.astro";
-import Navitem from "../shared/Navitem.astro";
-
 const navItems = [
-  { href: "#inicio", text: "Inicio" },
-  { href: "#services", text: "Servicios" },
-  { href: "#nosotros", text: "Nosotros" },
-  { href: "#proyectos", text: "Proyectos" },
-  { href: "#testimonios", text: "Testimonios" },
-  { href: "#contacto", text: "Contacto" },
+  { href: "#services",    text: "Servicios" },
+  { href: "#proyectos",   text: "Proyectos" },
+  { href: "#testimonios", text: "Clientes" },
+  { href: "#faq",         text: "FAQ" },
 ];
 ---
 
-<header
-  class="fixed inset-x-0 top-0 z-50 backdrop-blur-md bg-white/70 dark:bg-neutral-900/70 border-b border-gray-200 dark:border-neutral-800 py-5"
->
-  <Container>
-    <nav class="w-full flex justify-between items-center gap-6 relative">
+<header id="site-header" class="fixed inset-x-0 top-0 z-50">
+  <!-- Pill container -->
+  <div class="max-w-6xl mx-auto px-4 pt-4">
+    <div class="relative flex items-center justify-between h-12 px-5 rounded-2xl border border-white/[0.09] bg-[#05071a]/90 backdrop-blur-xl shadow-[0_2px_24px_rgba(0,0,0,0.5)]">
+
+      <!-- Accent line top -->
+      <div class="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-white/[0.12] to-transparent rounded-full pointer-events-none"></div>
+
       <!-- Logo -->
-      <div class="inline-flex items-center gap-3 min-w-max">
-        <a href="/" class="flex items-center gap-3">
-          <!-- Logo modo claro -->
-          <img
-            src="/nexsign.png"
-            alt="Logo NexSign Light"
-            class="w-10 h-10 object-contain block dark:hidden"
-          />
-          <!-- Logo modo oscuro -->
-          <img
-            src="/nexsign_dark.png"
-            alt="Logo NexSign Dark"
-            class="w-10 h-10 object-contain hidden dark:block"
-          />
+      <a href="/" class="flex items-center gap-2.5 shrink-0">
+        <div class="w-6 h-6 rounded-md bg-[#0E037F] flex items-center justify-center">
+          <img src="/nexsign_dark.png" alt="" class="w-3.5 h-3.5 object-contain brightness-0 invert" aria-hidden="true" />
+        </div>
+        <span class="text-sm font-semibold text-white tracking-tight">NexSign</span>
+      </a>
 
-          <div class="text-lg font-semibold text-heading-1 dark:text-white">
-            NexSign
-          </div>
-        </a>
-      </div>
-
-      <!-- Navegación principal (escritorio) -->
-      <ul class="hidden lg:flex gap-8 text-heading-2">
-        {navItems.map((item) => <Navitem {...item} />)}
-      </ul>
-
-      <!-- Botones a la derecha -->
-      <div class="flex items-center gap-4">
-        <!-- Switch Dark/Light -->
-        <button
-          data-switch-theme
-          class="outline-none p-2 border border-box-border rounded-full flex items-center justify-center"
-        >
-          <!-- Luna (modo oscuro) -->
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-6 h-6 hidden dark:block text-white"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+      <!-- Nav links — desktop -->
+      <nav class="hidden lg:flex items-center gap-0.5 absolute left-1/2 -translate-x-1/2" aria-label="Navegación principal">
+        {navItems.map(item => (
+          <a
+            href={item.href}
+            class="px-4 py-1.5 text-[13px] text-[#6b7280] hover:text-[#d1d5db] transition-colors duration-150 rounded-lg hover:bg-white/[0.04]"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M21.75 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
-            ></path>
-          </svg>
-          <!-- Sol (modo claro) -->
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-6 h-6 dark:hidden text-[#020D3B]"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M12 3v2m6.364.364l-1.414 1.414M21 12h-2M18.364 18.364l-1.414-1.414M12 21v-2m-6.364-.364l1.414-1.414M3 12h2m-.364-6.364l1.414 1.414M12 7a5 5 0 100 10 5 5 0 000-10z"
-            ></path>
-          </svg>
-        </button>
+            {item.text}
+          </a>
+        ))}
+      </nav>
 
-        <!-- Botón Get Started -->
-        <BtnLink
-          text="Empezar"
+      <!-- Acciones -->
+      <div class="flex items-center gap-2">
+        <!-- Contactar — desktop only -->
+        <a
           href="#contacto"
-          className="w-max"
-          variant="primary"
-        />
-
-        <!-- Menú hamburguesa móvil con SVG dinámico -->
-        <button
-          data-toggle-nav
-          data-open-nav="false"
-          class="outline-none w-8 h-8 flex items-center justify-center lg:hidden relative"
+          class="hidden lg:inline-flex items-center h-8 px-4 rounded-xl text-[13px] text-[#6b7280] hover:text-[#d1d5db] transition-colors duration-150"
         >
-          <!-- Icono: Abrir -->
-          <svg
-            data-icon-open
-            class="absolute inset-0 w-full h-full transition-opacity duration-200 ease-in-out text-heading-2 block"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M3 12H21M3 6H21M9 18H21"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"></path>
-          </svg>
+          Contacto
+        </a>
 
-          <!-- Icono: Cerrar -->
-          <svg
-            data-icon-close
-            class="absolute inset-0 w-full h-full transition-opacity duration-200 ease-in-out opacity-0 pointer-events-none text-heading-2"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M18 6L6 18M6 6L18 18"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"></path>
-          </svg>
+        <!-- CTA primario -->
+        <a
+          href="https://wa.me/51993106111?text=Hola,%20quiero%20saber%20m%C3%A1s%20sobre%20sus%20servicios"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center h-8 px-4 rounded-xl bg-white text-[#050714] text-[13px] font-semibold hover:bg-[#f0f0f0] transition-colors duration-150"
+        >
+          <span class="hidden sm:inline">Empezar proyecto</span>
+          <span class="sm:hidden">Comenzar</span>
+        </a>
 
-          <span class="sr-only">Toggle navigation</span>
+        <!-- Hamburguesa — mobile -->
+        <button
+          id="nav-toggle"
+          class="lg:hidden w-8 h-8 flex items-center justify-center ml-1"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          <!-- Icon hamburger -->
+          <svg id="icon-ham" class="w-4 h-4 text-[#9ca3af]" fill="none" viewBox="0 0 16 16">
+            <path d="M2 8h12M2 4h12M2 12h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <!-- Icon close -->
+          <svg id="icon-close" class="w-4 h-4 text-[#9ca3af] hidden" fill="none" viewBox="0 0 16 16">
+            <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
         </button>
       </div>
-    </nav>
-
-    <!-- Menú móvil desplegable -->
-    <div
-      data-navbar
-      class="lg:hidden overflow-hidden transition-all duration-300 h-0 bg-white dark:bg-neutral-900 absolute top-full left-0 right-0 z-40"
-    >
-      <ul class="flex flex-col gap-6 p-6 text-heading-2">
-        {navItems.map((item) => <Navitem {...item} />)}
-      </ul>
     </div>
 
-    <!-- Fondo oscuro detrás del menú -->
+    <!-- Mobile menu panel — debajo del pill -->
     <div
-      data-nav-overlay
-      data-is-visible="false"
-      class="fixed inset-0 z-30 bg-black/50 hidden"
+      id="mobile-nav"
+      class="lg:hidden mt-2 rounded-2xl border border-white/[0.09] bg-[#05071a]/95 backdrop-blur-xl overflow-hidden"
+      style="display: none;"
     >
+      <nav class="flex flex-col px-3 py-3">
+        {navItems.map(item => (
+          <a
+            href={item.href}
+            class="mobile-nav-link px-4 py-3 text-sm text-[#9ca3af] hover:text-white hover:bg-white/[0.04] rounded-xl transition-colors duration-150 font-medium"
+          >
+            {item.text}
+          </a>
+        ))}
+        <div class="mt-2 pt-2 border-t border-white/[0.06] px-1">
+          <a
+            href="#contacto"
+            class="mobile-nav-link flex items-center gap-2 px-4 py-3 text-sm font-semibold text-white rounded-xl hover:bg-white/[0.04] transition-colors duration-150"
+          >
+            Agendar llamada
+            <svg class="w-3.5 h-3.5 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </nav>
     </div>
-  </Container>
+  </div>
 </header>
 
-<script>
-  // Configurar scroll suave para todos los enlaces del navbar
-  document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('a[href^="#"]');
-    const mobileNavToggle = document.querySelector('[data-toggle-nav]');
-    const mobileNav = document.querySelector('[data-navbar]') as HTMLElement;
-    const navOverlay = document.querySelector('[data-nav-overlay]') as HTMLElement;
+<!-- Spacer -->
+<div class="h-[72px]"></div>
 
-    // Manejar scroll suave
-    navLinks.forEach(link => {
-      link.addEventListener('click', function(e: Event) {
-        const target = e.currentTarget as HTMLAnchorElement;
-        const href = target.getAttribute('href');
-        
-        // Si es solo "#", ir al inicio de la página
-        if (href === '#') {
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle   = document.getElementById('nav-toggle') as HTMLButtonElement;
+    const mobileNav = document.getElementById('mobile-nav') as HTMLElement;
+    const iconHam  = document.getElementById('icon-ham') as SVGElement;
+    const iconClose = document.getElementById('icon-close') as SVGElement;
+    let isOpen = false;
+
+    function openMenu() {
+      isOpen = true;
+      mobileNav.style.display = 'block';
+      toggle.setAttribute('aria-expanded', 'true');
+      iconHam.classList.add('hidden');
+      iconClose.classList.remove('hidden');
+      document.addEventListener('click', handleOutsideClick);
+    }
+
+    function closeMenu() {
+      isOpen = false;
+      mobileNav.style.display = 'none';
+      toggle.setAttribute('aria-expanded', 'false');
+      iconHam.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+      document.removeEventListener('click', handleOutsideClick);
+    }
+
+    function handleOutsideClick(e: MouseEvent) {
+      const header = document.getElementById('site-header');
+      if (header && !header.contains(e.target as Node)) {
+        closeMenu();
+      }
+    }
+
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      isOpen ? closeMenu() : openMenu();
+    });
+
+    // Cerrar al hacer click en links del menú mobile
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => closeMenu());
+    });
+
+    // Scroll suave
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e: Event) => {
+        const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+        if (!href || href === '#') {
           e.preventDefault();
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
+          window.scrollTo({ top: 0, behavior: 'smooth' });
           return;
         }
-
-        // Para otros enlaces con ID
-        if (href) {
-          const targetId = href.substring(1);
-          const targetElement = document.getElementById(targetId);
-          
-          if (targetElement) {
-            e.preventDefault();
-            
-            // Obtener la altura del header fijo
-            const header = document.querySelector('header') as HTMLElement;
-            const headerHeight = header ? header.offsetHeight : 80;
-            
-            // Calcular la posición con offset para el header fijo
-            const targetPosition = targetElement.offsetTop - headerHeight - 20;
-            
-            window.scrollTo({
-              top: targetPosition,
-              behavior: 'smooth'
-            });
-
-            // Cerrar el menú móvil si está abierto
-            if (mobileNav && mobileNavToggle) {
-              const isOpen = mobileNavToggle.getAttribute('data-open-nav') === 'true';
-              if (isOpen) {
-                closeMobileNav();
-              }
-            }
-          }
+        const el = document.getElementById(href.slice(1));
+        if (el) {
+          e.preventDefault();
+          const headerEl = document.getElementById('site-header') as HTMLElement;
+          const offset = (headerEl?.offsetHeight ?? 72) + 12;
+          window.scrollTo({ top: el.offsetTop - offset, behavior: 'smooth' });
         }
       });
     });
-
-    // Función para cerrar el menú móvil
-    function closeMobileNav() {
-      if (mobileNavToggle && mobileNav && navOverlay) {
-        mobileNavToggle.setAttribute('data-open-nav', 'false');
-        mobileNav.style.height = '0';
-        navOverlay.classList.add('hidden');
-        navOverlay.setAttribute('data-is-visible', 'false');
-
-        // Actualizar iconos
-        const openIcon = mobileNavToggle.querySelector('[data-icon-open]');
-        const closeIcon = mobileNavToggle.querySelector('[data-icon-close]');
-        
-        if (openIcon && closeIcon) {
-          openIcon.classList.remove('opacity-0', 'pointer-events-none');
-          closeIcon.classList.add('opacity-0', 'pointer-events-none');
-        }
-      }
-    }
   });
 </script>

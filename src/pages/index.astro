@@ -1,27 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero/HeroSection.astro';
+import QuienesSomos from '../components/Nosotros/QuienesSomos.astro';
 import Servicios from '../components/Servicios/ServiciosGrid.astro';
-import Nosotros from '../components/Nosotros/NosotrosSection.astro';
+import ProductoSection from '@/components/Producto/ProductoSection.astro';
 import Proyectos from '../components/Proyectos/ProyectosGrid.astro';
-import TeamSection from "../components/Team/TeamSection.astro"
-import "../style/global.css";
 import TestimoniosSection from '@/components/Testimonios/TestimoniosSection.astro';
+import FaqSection from '@/components/Faq/FaqSection.astro';
 import ContactoForm from '@/components/Contacto/ContactoForm.astro';
-import Herramientas from '@/components/cta/Herramientas.astro';
-
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import "../style/global.css";
 ---
 
-<Layout title="Nexsing - Soluciones de Software">
+<Layout
+  title="NexSign - Startup Tecnologica para Negocios"
+  description="NexSign es una startup tecnologica peruana que crea sitios web, sistemas digitales y estrategias SEO para empresas que quieren crecer en internet."
+>
   <Hero />
+  <QuienesSomos />
   <Servicios />
-  <Nosotros />
-  <Herramientas />
-  <!-- <TeamSection /> -->
+  <ProductoSection />
   <Proyectos />
   <TestimoniosSection />
+  <FaqSection />
   <ContactoForm />
 </Layout>

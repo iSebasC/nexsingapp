@@ -1,54 +1,38 @@
 ---
-const herramientas = [
-  { nombre: "Figma", logo: "/logos/figma.svg" },
-  { nombre: "Astro", logo: "/logos/astro.svg" },
-  { nombre: "Tailwind CSS", logo: "/logos/tailwindcss.svg" },
-  { nombre: "React", logo: "/logos/react.svg" },
-  { nombre: "Next.js", logo: "/logos/next.svg" },
-  { nombre: "Nest.js", logo: "/logos/nestjs.svg" },
-  { nombre: "GitHub", logo: "/logos/github.svg" },
-  { nombre: "Vercel", logo: "/logos/vercel.svg" },
-  { nombre: "Netlify", logo: "/logos/netlify.svg" },
+const stack = [
+  { nombre: "Figma",       logo: "/logos/figma.svg" },
+  { nombre: "React",       logo: "/logos/react.svg" },
+  { nombre: "Next.js",     logo: "/logos/next.svg" },
+  { nombre: "Astro",       logo: "/logos/astro.svg" },
+  { nombre: "Tailwind",    logo: "/logos/tailwindcss.svg" },
+  { nombre: "Nest.js",     logo: "/logos/nestjs.svg" },
+  { nombre: "GitHub",      logo: "/logos/github.svg" },
+  { nombre: "Vercel",      logo: "/logos/vercel.svg" },
 ];
 ---
 
-<section class="py-16 bg-[#1d4ed8] dark:bg-[#0b0b0f] overflow-hidden">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h2 class="text-sm font-semibold text-white uppercase tracking-wider">
-      Herramientas y Tecnologías
-    </h2>
-    <p class="mt-2 text-3xl font-bold text-white">Con las que trabajamos</p>
+<section class="py-16 px-6 bg-[#050714] border-b border-white/[0.05]">
+  <div class="max-w-7xl mx-auto">
 
-    <div class="mt-10 relative overflow-hidden">
-      <div
-        class="flex gap-10 animate-scroll items-center w-max mx-auto"
-        style="animation: scroll 30s linear infinite"
-      >
-        {
-          herramientas.concat(herramientas).map((h, i) => (
-            <div class="flex-shrink-0">
-              <img
-                src={h.logo}
-                alt={`Logo de ${h.nombre}`}
-                title={h.nombre}
-                class="h-12 w-auto brightness-0 invert dark:invert-0 dark:brightness-200 grayscale hover:grayscale-0 transition duration-300"
-                loading="lazy"
-              />
-            </div>
-          ))
-        }
-      </div>
+    <!-- Label -->
+    <p class="text-xs font-medium text-[#374151] uppercase tracking-[0.18em] mb-10 text-center">
+      Stack tecnológico
+    </p>
+
+    <!-- Grid estático centrado -->
+    <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+      {stack.map(({ nombre, logo }) => (
+        <div class="flex items-center gap-2.5 opacity-30 hover:opacity-70 transition-opacity duration-200">
+          <img
+            src={logo}
+            alt={nombre}
+            class="h-5 w-auto brightness-0 invert object-contain"
+            loading="lazy"
+          />
+          <span class="text-xs font-medium text-gray-400 hidden sm:block">{nombre}</span>
+        </div>
+      ))}
     </div>
-  </div>
 
-  <style>
-    @keyframes scroll {
-      0% {
-        transform: translateX(0%);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
-    }
-  </style>
+  </div>
 </section>

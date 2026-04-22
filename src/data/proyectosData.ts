@@ -2,89 +2,124 @@
 
 export interface Proyecto {
   slug: string;
-  titulo: string;
+  titulo: string;           // nombre de marca (Hilink, Carpio…)
+  tituloNegocio: string;    // título orientado a negocio (para cards)
   descripcion: string;
+  problema: string;
+  solucion: string;
   cliente: string;
   año: number;
   categoria: string;
+  region?: string;          // contexto geográfico (Australia, Perú…)
   imagen: string;
   resultados: string[];
-  stack?: string[];       // ← NUEVO: tecnologías/herramientas usadas
-  autor?: string;         // ← NUEVO: autor del proyecto (opcional)
-  enlaceWeb?: string;     // ← NUEVO: enlace a la web del proyecto (opcional)
+  stack?: string[];
+  autor?: string;
+  enlaceWeb?: string;
 }
 
 
 export const proyectos: Proyecto[] = [
+
+  // 1. Internacional (Australia)
   {
     slug: "hilink-dashboard",
     titulo: "Hilink",
+    tituloNegocio: "Plataforma digital para empresa internacional",
     descripcion:
-      "Hilink es una aplicación móvil y plataforma web para senderistas y exploradores de naturaleza. Ofrece mapas offline, planificación de rutas y tecnología de realidad aumentada para guiar a los usuarios incluso sin conexión a internet. La solución está diseñada con un enfoque UX/UI moderno, rendimiento optimizado y funcionalidades enfocadas en seguridad, comunidad y descubrimiento de nuevos destinos.",
+      "Diseñamos la plataforma completa de una startup internacional de turismo de aventura: app móvil, mapas offline y panel de administración orientado a conversión.",
+    problema:
+      "Una startup australiana de turismo de aventura necesitaba una plataforma digital completa. Sus usuarios no podían planificar rutas ni orientarse en zonas sin cobertura, y no existía un panel de gestión para los operadores.",
+    solucion:
+      "Diseñamos una app móvil con mapas completamente offline, planificación de rutas personalizadas y realidad aumentada para orientación en campo. Incluye panel administrativo para gestores de destinos y módulo de comunidad para descubrimiento de nuevas rutas.",
     cliente: "Hilink Solutions",
     año: 2024,
     categoria: "Product Design",
+    region: "Australia",
     imagen: "/proyectos/4.png",
     resultados: [
-      "Diseño intuitivo y visualmente atractivo",
-      "Mapas sin conexión para zonas sin cobertura",
-      "Tecnología de realidad aumentada para orientación",
-      "Sección de descubrimiento de nuevas rutas cada mes",
-      "Panel informativo claro para usuarios y administradores"
+      "Navegación funcional sin conexión a internet",
+      "Reducción de incidencias por desorientación en ruta",
+      "Panel de gestión claro para administradores de destinos",
+      "Módulo de descubrimiento que incrementa retención de usuarios",
     ],
+    stack: ["React Native", "Node.js", "Figma"],
     enlaceWeb: "https://travelhk.netlify.app/"
   },
-  {
-    slug: "carpio-web",
-    titulo: "Carpio",
-    descripcion:
-      "Plataforma administrativa orientada a la gestión de ventas de autos. Se mejoraron funcionalidades tipo CRM para optimizar procesos comerciales.",
-    cliente: "Anthony",
-    año: 2024,
-    categoria: "Sistema Administrativo",
-    imagen: "/proyectos/carpio.png",
-    resultados: [
-      "Sistema CRM para seguimiento de ventas",
-      "Gestión de contactos, vehículos y oportunidades",
-      "Optimización del flujo de trabajo interno",
-    ],
-    stack: ["Laravel", "Vue", "MySQL", "cPanel"],
-    autor: "Sebastian & Julio"
-  }, 
-  {
-    slug: "ganahoy-app",
-    titulo: "Gana Hoy",
-    descripcion:
-      "GanaHoy es una plataforma diseñada para ayudar a los usuarios a gestionar sus ahorros de forma inteligente, segura y personalizada. La aplicación permite crear planes de ahorro según las metas del usuario, controlar los movimientos en tiempo real y garantizar la seguridad con tecnología moderna. Su diseño UX/UI está centrado en la simplicidad y confianza, facilitando la adopción de buenos hábitos financieros.",
-    cliente: "Gana Hoy",
-    año: 2024,
-    categoria: "Product Design",
-    imagen: "/proyectos/gana-hoy.png",
-    resultados: [
-      "Planes de ahorro personalizados y flexibles",
-      "Gestión y monitoreo fácil desde cualquier lugar",
-      "Seguridad garantizada para datos y transacciones",
-      "Testimonios reales que refuerzan la confianza del usuario",
-      "Sección de preguntas frecuentes para resolver dudas comunes"
-    ],
-    enlaceWeb: "https://ganahoy.netlify.app/"
-  },
+
+  // 2. Marketplace (Perú)
   {
     slug: "prestopolis-web",
     titulo: "Prestopolis",
+    tituloNegocio: "Marketplace de inversión inmobiliaria",
     descripcion:
-      "Prestopolis es una plataforma de crowdfunding inmobiliario que conecta inversionistas con proyectos gestionados de forma profesional. Permite crear proyectos, realizar depósitos y administrar inversiones. El desarrollo se realizó bajo altos estándares UX/UI y de rendimiento, garantizando una experiencia intuitiva y eficiente para el usuario final.",
+      "Construimos el marketplace que conecta inversionistas con proyectos inmobiliarios en Perú: gestión de proyectos, depósitos y panel de rendimientos en un solo sistema.",
+    problema:
+      "Gestores de proyectos inmobiliarios no tenían una plataforma que conectara a inversionistas individuales con sus oportunidades de forma transparente, con trazabilidad de depósitos y rendimientos en tiempo real.",
+    solucion:
+      "Desarrollamos una plataforma completa de crowdfunding inmobiliario: publicación de proyectos, gestión de depósitos, panel de inversiones por usuario y dashboard administrativo para gestores. Arquitectura robusta con Next.js en frontend, Laravel y NestJS en backend.",
     cliente: "Miguel",
     año: 2024,
-    categoria: "Crowdfunding Inmobiliario",
+    categoria: "Web",
+    region: "Perú",
     imagen: "/proyectos/prestopolis.svg",
     resultados: [
-      "Diseño web atractivo y orientado a inversión",
-      "Gestión integral de proyectos, depósitos y estadísticas",
-      "Panel administrativo para gestores e inversionistas"
+      "Plataforma operativa conectando inversionistas con proyectos reales",
+      "Panel administrativo completo para gestores e inversionistas",
+      "Trazabilidad total de depósitos y estado de cada proyecto",
     ],
-    stack: ["Next.js", "Laravel", "NestJS", "MySQL"],
+    stack: ["Next.js", "Laravel", "MySQL"],
     autor: "Sebastian",
     enlaceWeb: "https://www.prestopolis.com/plataforma"
+  },
+
+  // 3. CRM / Sistema
+  {
+    slug: "carpio-web",
+    titulo: "Carpio",
+    tituloNegocio: "Sistema CRM para gestión de clientes y ventas",
+    descripcion:
+      "Sistema CRM a medida que reemplazó hojas de cálculo y centralizó la operación comercial: clientes, inventario de vehículos, oportunidades de venta y reportes.",
+    problema:
+      "Una concesionaria de vehículos operaba sin sistema centralizado. Los seguimientos de clientes se hacían en hojas de cálculo, las oportunidades se perdían y no había visibilidad del pipeline comercial.",
+    solucion:
+      "Construimos un CRM interno con módulos de contactos, inventario de vehículos, seguimiento de oportunidades por etapa y reportes de actividad. La plataforma reemplazó los procesos manuales y centralizó la operación completa del equipo de ventas.",
+    cliente: "Anthony",
+    año: 2024,
+    categoria: "Sistema Administrativo",
+    region: "Perú",
+    imagen: "/proyectos/carpio.png",
+    resultados: [
+      "Pipeline de ventas visible y estructurado por etapa",
+      "Cero pérdida de leads por falta de seguimiento",
+      "Gestión de clientes completamente centralizada y auditable",
+    ],
+    stack: ["Laravel", "Vue", "MySQL"],
+    autor: "Sebastian & Julio"
+  },
+
+  // 4. Fintech
+  {
+    slug: "ganahoy-app",
+    titulo: "Gana Hoy",
+    tituloNegocio: "Plataforma fintech de ahorro personal",
+    descripcion:
+      "Plataforma de ahorro que permite crear planes personalizados por meta, monitorear movimientos en tiempo real y mantener hábitos financieros sostenidos.",
+    problema:
+      "Usuarios sin herramientas accesibles para crear y mantener hábitos de ahorro. Las soluciones existentes eran complejas, poco transparentes y no adaptables a objetivos personales distintos.",
+    solucion:
+      "Diseñamos una plataforma de ahorro con planes flexibles por meta, monitoreo en tiempo real y una interfaz que prioriza confianza y simplicidad para fomentar adopción sostenida.",
+    cliente: "Gana Hoy",
+    año: 2024,
+    categoria: "Product Design",
+    region: "Perú",
+    imagen: "/proyectos/gana-hoy.png",
+    resultados: [
+      "Planes de ahorro personalizados y ajustables por objetivo",
+      "Monitoreo de metas en tiempo real desde cualquier dispositivo",
+      "Alta tasa de adopción en primeras sesiones de uso",
+    ],
+    stack: ["React", "Node.js", "Figma"],
+    enlaceWeb: "https://ganahoy.netlify.app/"
   },
 ];

@@ -4,119 +4,120 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { proyectos } from "@/data/proyectosData";
 
-// Mapear categorías del español al inglés para compatibilidad
-const categoriaMap = {
-  "Product Design": "Gráfico",
-  "Sistema Administrativo": "Web",
-  "Web": "Web",
-  "Branding": "Marca",
-  "Graphic": "Gráfico",
+const categoriaMap: Record<string, string> = {
+  "Product Design":            "Diseño",
+  "Sistema Administrativo":    "Sistema",
+  "Web":                       "Web",
+  "Branding":                  "Branding",
+  "Graphic":                   "Diseño",
   "Crowdfunding Inmobiliario": "Web",
-  "Website Design": "Web"
+  "Website Design":            "Web",
 };
 
-const categorias = ["Todos", "Marca", "Web", "Gráfico"];
+const categorias = ["Todos", "Web", "Sistema", "Diseño"];
 
 export default function ProyectosGridR() {
   const [filtroActivo, setFiltroActivo] = useState("Todos");
 
-  // Convertir datos para usar con el filtro
-  const proyectosConCategoria = proyectos.map(proyecto => ({
-    ...proyecto,
-    categoryEsp: categoriaMap[proyecto.categoria as keyof typeof categoriaMap] || "Web",
-    subtituloCorto: proyecto.slug === "prestopolis-web" 
-      ? "Crowdfunding inmobiliario seguro y eficiente." 
-      : proyecto.slug === "hilink-dashboard"
-      ? "Explora sin perderte, incluso sin señal."
-      : proyecto.slug === "ganahoy-app"
-      ? "Gestiona tus ahorros de forma inteligente y segura."
-      : proyecto.descripcion.length > 60 
-        ? proyecto.descripcion.substring(0, 60) + "..." 
-        : proyecto.descripcion
+  const proyectosConCategoria = proyectos.map((p) => ({
+    ...p,
+    categoryEsp: categoriaMap[p.categoria] ?? "Web",
+    stackSlice: (p.stack ?? []).slice(0, 3) as string[],
   }));
 
-  const proyectosFiltrados = filtroActivo === "Todos" 
-    ? proyectosConCategoria 
-    : proyectosConCategoria.filter(proyecto => proyecto.categoryEsp === filtroActivo);
+  const filtrados =
+    filtroActivo === "Todos"
+      ? proyectosConCategoria
+      : proyectosConCategoria.filter((p) => p.categoryEsp === filtroActivo);
 
   return (
     <div className="w-full">
+
       {/* Filtros */}
-      <div className="flex flex-wrap justify-end gap-4 mb-12">
-        {categorias.map((categoria) => (
+      <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-10 border-b border-white/[0.06] pb-5">
+        {categorias.map((cat) => (
           <button
-            key={categoria}
-            onClick={() => setFiltroActivo(categoria)}
-            className={`px-6 py-2 text-sm font-medium transition-all duration-300 relative ${
-              filtroActivo === categoria
-                ? "text-[#020D3B] dark:text-white font-semibold"
-                : "text-gray-500 dark:text-gray-400 hover:text-[#020D3B] dark:hover:text-white"
+            key={cat}
+            onClick={() => setFiltroActivo(cat)}
+            className={`text-sm font-medium transition-colors duration-150 ${
+              filtroActivo === cat
+                ? "text-white"
+                : "text-[#4b5563] hover:text-[#9ca3af]"
             }`}
           >
-            {categoria}
-            {filtroActivo === categoria && (
-              <motion.div
-                layoutId="activeFilter"
-                className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#1864EE]"
-                initial={false}
-                transition={{ type: "spring", stiffness: 500, damping: 30 }}
-              />
-            )}
+            {cat}
           </button>
         ))}
       </div>
 
-      {/* Grid de proyectos */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <AnimatePresence mode="wait">
-          {proyectosFiltrados.map((proyecto, index) => (
+      {/* Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <AnimatePresence mode="popLayout">
+          {filtrados.map((proyecto, index) => (
             <motion.div
               key={`${filtroActivo}-${proyecto.slug}`}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.1,
-              }}
-              className="group cursor-pointer"
+              exit={{ opacity: 0, y: 4 }}
+              transition={{ duration: 0.2, delay: index * 0.04 }}
             >
-              <a href={`/proyecto/${proyecto.slug}`} className="block">
-                <div className="bg-white dark:bg-[#1e293b] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl dark:hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-1 border border-gray-100 dark:border-gray-600">
-                  {/* Imagen del proyecto */}
-                  <div className="aspect-[4/3] overflow-hidden relative bg-gray-100 dark:bg-[#27272e]">
-                    <img
-                      src={proyecto.imagen}
-                      alt={proyecto.titulo}
-                      className="w-full h-full object-contain p-6 group-hover:scale-105 transition-transform duration-700"
-                    />
-                    
-                    {/* Overlay hover */}
-                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
-                  </div>
-                  
-                  {/* Contenido */}
-                  <div className="p-6">
-                    <h3 className="text-lg font-bold text-[#020D3B] dark:text-white mb-1 transition-colors duration-300">
-                      {proyecto.titulo}
-                    </h3>
-                    <p className="text-gray-500 dark:text-gray-400 text-sm transition-colors duration-300">
-                      {proyecto.subtituloCorto}
-                    </p>
-                    
-                    {/* Badge de categoría */}
-                    <div className="mt-3">
-                      <span className="inline-block px-3 py-1 text-xs font-medium bg-[#F6F3FE] dark:bg-[#27272e] text-[#1864EE] rounded-full transition-colors duration-300">
-                        {proyecto.categoryEsp}
+              <a
+                href={`/proyecto/${proyecto.slug}`}
+                className="group flex flex-col h-full min-h-[200px] rounded-xl border border-white/[0.08] bg-[#050714] hover:border-white/[0.14] hover:bg-white/[0.02] transition-all duration-200"
+              >
+                <div className="flex flex-col flex-1 p-5">
+
+                  {/* Fila superior: categoría + región */}
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span className="text-[10px] font-semibold text-[#6366f1] uppercase tracking-[0.12em]">
+                      {proyecto.categoryEsp}
+                    </span>
+                    {proyecto.region && (
+                      <span className="text-[10px] text-[#374151] font-medium">
+                        {proyecto.region}
                       </span>
-                    </div>
+                    )}
                   </div>
+
+                  {/* Título de negocio — primario */}
+                  <h3 className="text-sm font-semibold text-[#e5e7eb] group-hover:text-white leading-snug transition-colors duration-150 mb-1">
+                    {proyecto.tituloNegocio}
+                  </h3>
+
+                  {/* Nombre de marca — secundario */}
+                  <p className="text-[11px] text-[#374151] mb-3">
+                    {proyecto.titulo}
+                  </p>
+
+                  {/* Descripción */}
+                  <p className="text-xs text-[#4b5563] leading-relaxed line-clamp-2">
+                    {proyecto.descripcion}
+                  </p>
+
+                  {/* Spacer */}
+                  <div className="flex-1" />
+
+                  {/* Stack */}
+                  {proyecto.stackSlice.length > 0 && (
+                    <div className="flex flex-wrap items-center gap-1.5 mt-4 pt-4 border-t border-white/[0.05]">
+                      {proyecto.stackSlice.map((tech, i) => (
+                        <span
+                          key={i}
+                          className="text-[10px] font-medium text-[#4b5563] px-2 py-0.5 rounded border border-white/[0.07]"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
                 </div>
               </a>
             </motion.div>
           ))}
         </AnimatePresence>
       </div>
+
     </div>
   );
 }

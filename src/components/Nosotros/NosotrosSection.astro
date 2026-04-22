@@ -1,49 +1,76 @@
-<section id="nosotros" class="relative flex flex-col justify-center items-start text-left min-h-screen px-6 md:px-12 overflow-hidden bg-white dark:bg-[#27272e]">
-  <div class="relative z-10 w-full px-6 md:px-12 pt-32 sm:pt-36 md:pt-40 pb-32 sm:pb-40">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-x-20 items-center">
-        {/* Texto */}
-        <div class="order-2 md:order-1 md:pr-12">
-          <div class="inline-block rounded-full px-4 py-1 text-sm font-medium bg-[#F6F3FE] dark:bg-[#1e293b] mb-4">
-            <span class="text-[#020D3B] dark:text-white font-black">NOS</span>
-            <span class="text-[#1864EE] font-black">OTROS</span>
-          </div>
+---
+---
 
-          <h2 class="text-3xl md:text-4xl font-extrabold text-[#020D3B] dark:text-white mb-4">
-            Hola, somos Julio y Sebastián
-          </h2>
+<section id="nosotros" class="relative py-28 px-6 bg-[#050714]">
 
-          <p class="text-[#1e293b] dark:text-gray-300 text-base md:text-lg mb-4 leading-relaxed">
-            Somos un equipo de diseñadores apasionados por crear experiencias digitales únicas.
-            Nos especializamos en diseño web, identidad visual y branding, ayudando a negocios y emprendedores a destacar en el mundo digital.
-          </p>
+  <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/[0.07] to-transparent"></div>
 
-          <p class="text-[#1e293b] dark:text-gray-300 text-base md:text-lg leading-relaxed">
-            Nuestro enfoque combina creatividad y estrategia para ofrecer soluciones visuales efectivas que conectan con tu audiencia y potencian tu presencia online.
-          </p>
+  <div class="relative z-10 max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-20 items-center">
 
-          {/* Botón */}
-          <div class="flex justify-start gap-4 mt-8">
-            <a
-              href="#contacto"
-              class="inline-flex items-center justify-center px-6 py-3 rounded-full text-white bg-[#1d4ed8] hover:bg-[#1e40af] transition font-semibold text-sm"
-            >
-              Más sobre nosotros
-            </a>
-          </div>
+      <!-- Texto -->
+      <div>
+        <p class="text-sm font-medium text-indigo-400 mb-6 tracking-wide">El equipo</p>
+
+        <h2 class="text-4xl md:text-5xl font-black text-white tracking-tight leading-tight mb-6">
+          Diseño y código,<br />
+          <span class="gradient-text-brand">sin intermediarios</span>
+        </h2>
+
+        <p class="text-gray-400 text-base leading-relaxed mb-10 max-w-md">
+          Somos Julio y Sebastián. Un diseñador y un desarrollador que trabajan juntos
+          directamente con cada cliente. Sin agencia, sin capas. Solo soluciones digitales
+          que funcionan.
+        </p>
+
+        <div class="flex items-center gap-5">
+          <a
+            href="https://wa.me/51993106111"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-[#050714] font-bold text-sm hover:bg-gray-100 transition-all duration-200"
+          >
+            <svg class="w-4 h-4 text-emerald-600 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Escribir ahora
+          </a>
+          <a
+            href="#proyectos"
+            class="text-sm text-gray-500 hover:text-white transition-colors duration-200 flex items-center gap-1.5"
+          >
+            Ver nuestro trabajo
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Visual -->
+      <div class="relative">
+        <div class="rounded-2xl overflow-hidden border border-white/[0.08]">
+          <img
+            src="/nosotros/01.png"
+            alt="Equipo NexSign — Julio y Sebastián"
+            class="w-full h-auto object-cover"
+          />
         </div>
 
-        {/* Imagen */}
-        <div class="order-1 md:order-2">
-          <div class="overflow-hidden shadow-lg rounded-3xl w-full max-w-md mx-auto md:mx-0">
-            <img
-              src="/nosotros/01.png"
-              alt="Equipo de diseño"
-              class="w-full h-auto object-cover rounded-3xl"
-            />
+        <!-- Pill sutil debajo de la imagen -->
+        <div class="mt-4 flex items-center gap-3">
+          <div class="flex -space-x-2">
+            <div class="w-7 h-7 rounded-full bg-[#0E037F] border-2 border-[#050714] flex items-center justify-center text-white text-[10px] font-bold">S</div>
+            <div class="w-7 h-7 rounded-full bg-rose-700 border-2 border-[#050714] flex items-center justify-center text-white text-[10px] font-bold">J</div>
+          </div>
+          <p class="text-xs text-gray-600">Sebastián (Dev) · Julio (Diseño)</p>
+          <div class="ml-auto flex items-center gap-1.5">
+            <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
+            <span class="text-xs text-gray-600">Disponibles</span>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>

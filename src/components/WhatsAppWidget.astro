@@ -1,97 +1,73 @@
-    <!-- WhatsApp Widget Flotante -->
-    <div x-data="{ open: false }" class="fixed bottom-6 right-6 z-50" x-cloak>
-      <!-- Botón flotante -->
-      <button
-        @click="open = !open"
-        class="w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg flex items-center justify-center transition"
-        aria-label="Abrir opciones de WhatsApp"
-      >
-        <svg
-          class="w-7 h-7"
-          fill="currentColor"
-          viewBox="0 0 32 32"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <title>WhatsApp</title>
-          <path
-            d="M16 .003C7.164.003.003 7.163.003 16c0 2.818.738 5.587 2.138 8.023L0 32l8.166-2.13A15.956 15.956 0 0 0 16 32c8.836 0 15.997-7.161 15.997-16S24.837.003 16 .003zm0 29.408c-2.602 0-5.14-.702-7.363-2.033l-.528-.313-4.84 1.262 1.29-4.708-.344-.555a13.359 13.359 0 0 1-2.01-7.118c0-7.408 6.027-13.436 13.438-13.436S29.438 8.59 29.438 16c0 7.41-6.028 13.41-13.438 13.41zm7.465-9.764c-.41-.205-2.426-1.197-2.8-1.332-.373-.14-.646-.205-.918.206-.273.41-1.057 1.332-1.296 1.605-.237.273-.49.307-.9.103-.41-.206-1.731-.637-3.297-2.027-1.219-1.088-2.04-2.428-2.28-2.838-.237-.41-.026-.63.18-.837.184-.182.41-.476.615-.714.2-.24.264-.41.41-.684.14-.273.07-.513-.035-.717-.104-.205-.918-2.22-1.258-3.04-.33-.792-.667-.683-.918-.692l-.785-.013c-.27 0-.7.103-1.064.513-.364.41-1.38 1.34-1.38 3.26s1.41 3.777 1.605 4.033c.2.273 2.773 4.233 6.738 5.94.94.405 1.672.647 2.243.83.94.3 1.794.257 2.47.157.753-.11 2.426-.99 2.77-1.945.34-.957.34-1.775.237-1.945-.098-.17-.36-.27-.77-.47z"
-          ></path>
-        </svg>
-      </button>
+<!-- WhatsApp Widget Flotante -->
+<div x-data="{ open: false }" class="fixed bottom-6 right-6 z-50" x-cloak>
 
-      <!-- Caja de opciones -->
-      <div
-        x-show="open"
-        @click.outside="open = false"
-        class="mt-3 w-72 bg-white rounded-lg shadow-2xl p-4"
-      >
-        <h3 class="text-green-600 font-semibold text-sm">
-          Iniciar una conversación
-        </h3>
-        <p class="text-xs text-gray-500 mb-4">
-          Elige con quién deseas chatear:
-        </p>
+  <!-- Botón flotante -->
+  <button
+    @click="open = !open"
+    class="w-13 h-13 w-[52px] h-[52px] bg-emerald-500 hover:bg-emerald-400 text-white rounded-2xl shadow-2xl shadow-emerald-900/50 flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5"
+    aria-label="Abrir opciones de WhatsApp"
+  >
+    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </button>
 
-        <!-- Diseñador -->
-        <a
-          href="https://wa.me/51940518961?text=Hola%20Julio,%20necesito%20información%20de%20diseño"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex items-center gap-3 p-3 rounded-lg hover:bg-green-50 transition"
-          aria-label="Chatear con Julio Cruz, diseñador gráfico"
-        >
-          <div
-            class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center text-white"
-          >
-            <svg
-              class="w-5 h-5"
-              fill="currentColor"
-              viewBox="0 0 32 32"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>WhatsApp</title>
-              <path
-                d="M16 .003C7.164.003.003 7.163.003 16c0 2.818.738 5.587 2.138 8.023L0 32l8.166-2.13A15.956 15.956 0 0 0 16 32c8.836 0 15.997-7.161 15.997-16S24.837.003 16 .003zm0 29.408c-2.602 0-5.14-.702-7.363-2.033l-.528-.313-4.84 1.262 1.29-4.708-.344-.555a13.359 13.359 0 0 1-2.01-7.118c0-7.408 6.027-13.436 13.438-13.436S29.438 8.59 29.438 16c0 7.41-6.028 13.41-13.438 13.41zm7.465-9.764c-.41-.205-2.426-1.197-2.8-1.332-.373-.14-.646-.205-.918.206-.273.41-1.057 1.332-1.296 1.605-.237.273-.49.307-.9.103-.41-.206-1.731-.637-3.297-2.027-1.219-1.088-2.04-2.428-2.28-2.838-.237-.41-.026-.63.18-.837.184-.182.41-.476.615-.714.2-.24.264-.41.41-.684.14-.273.07-.513-.035-.717-.104-.205-.918-2.22-1.258-3.04-.33-.792-.667-.683-.918-.692l-.785-.013c-.27 0-.7.103-1.064.513-.364.41-1.38 1.34-1.38 3.26s1.41 3.777 1.605 4.033c.2.273 2.773 4.233 6.738 5.94.94.405 1.672.647 2.243.83.94.3 1.794.257 2.47.157.753-.11 2.426-.99 2.77-1.945.34-.957.34-1.775.237-1.945-.098-.17-.36-.27-.77-.47z"
-              ></path>
-            </svg>
-          </div>
-          <div>
-            <p class="text-sm font-semibold text-gray-800">Diseñador UI/UX</p>
-            <p class="text-xs text-gray-500 leading-none">
-              +51 940 518 961 – Julio Cruz
-            </p>
-          </div>
-        </a>
-
-        <!-- Desarrollador -->
-        <a
-          href="https://wa.me/51993106111?text=Hola%20Sebastián,%20necesito%20soporte%20técnico"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex items-center gap-3 p-3 rounded-lg hover:bg-green-50 transition"
-          aria-label="Chatear con Sebastián Cabrera, desarrollador web"
-        >
-          <div
-            class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center text-white"
-          >
-            <svg
-              class="w-5 h-5"
-              fill="currentColor"
-              viewBox="0 0 32 32"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>WhatsApp</title>
-              <path
-                d="M16 .003C7.164.003.003 7.163.003 16c0 2.818.738 5.587 2.138 8.023L0 32l8.166-2.13A15.956 15.956 0 0 0 16 32c8.836 0 15.997-7.161 15.997-16S24.837.003 16 .003zm0 29.408c-2.602 0-5.14-.702-7.363-2.033l-.528-.313-4.84 1.262 1.29-4.708-.344-.555a13.359 13.359 0 0 1-2.01-7.118c0-7.408 6.027-13.436 13.438-13.436S29.438 8.59 29.438 16c0 7.41-6.028 13.41-13.438 13.41zm7.465-9.764c-.41-.205-2.426-1.197-2.8-1.332-.373-.14-.646-.205-.918.206-.273.41-1.057 1.332-1.296 1.605-.237.273-.49.307-.9.103-.41-.206-1.731-.637-3.297-2.027-1.219-1.088-2.04-2.428-2.28-2.838-.237-.41-.026-.63.18-.837.184-.182.41-.476.615-.714.2-.24.264-.41.41-.684.14-.273.07-.513-.035-.717-.104-.205-.918-2.22-1.258-3.04-.33-.792-.667-.683-.918-.692l-.785-.013c-.27 0-.7.103-1.064.513-.364.41-1.38 1.34-1.38 3.26s1.41 3.777 1.605 4.033c.2.273 2.773 4.233 6.738 5.94.94.405 1.672.647 2.243.83.94.3 1.794.257 2.47.157.753-.11 2.426-.99 2.77-1.945.34-.957.34-1.775.237-1.945-.098-.17-.36-.27-.77-.47z"
-              ></path>
-            </svg>
-          </div>
-          <div>
-            <p class="text-sm font-semibold text-gray-800">Desarrollador Web</p>
-            <p class="text-xs text-gray-500 leading-none">
-              +51 993 106 111 – Sebastián Cabrera
-            </p>
-          </div>
-        </a>
+  <!-- Panel dropdown -->
+  <div
+    x-show="open"
+    x-transition:enter="transition ease-out duration-200"
+    x-transition:enter-start="opacity-0 translate-y-2 scale-95"
+    x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+    x-transition:leave="transition ease-in duration-150"
+    x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+    x-transition:leave-end="opacity-0 translate-y-2 scale-95"
+    @click.outside="open = false"
+    class="absolute bottom-[calc(100%+12px)] right-0 w-72 rounded-2xl border border-white/[0.08] bg-[#0a0d1a]/95 backdrop-blur-xl shadow-2xl shadow-black/50 overflow-hidden"
+  >
+    <div class="p-4 border-b border-white/[0.06]">
+      <div class="flex items-center gap-2 mb-0.5">
+        <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+        <h3 class="text-white text-sm font-semibold">Estamos disponibles</h3>
       </div>
+      <p class="text-xs text-gray-500">¿Con quién deseas hablar?</p>
     </div>
+
+    <!-- Diseñador -->
+    <a
+      href="https://wa.me/51940518961?text=Hola%20Julio,%20me%20interesa%20saber%20m%C3%A1s%20sobre%20sus%20servicios%20de%20dise%C3%B1o"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex items-center gap-3 p-4 hover:bg-white/[0.04] transition-colors border-b border-white/[0.04]"
+    >
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-600 to-pink-500 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+        J
+      </div>
+      <div class="flex-1 min-w-0">
+        <p class="text-sm font-semibold text-white">Julio Cruz</p>
+        <p class="text-xs text-gray-500">Diseñador UI/UX</p>
+      </div>
+      <svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+    </a>
+
+    <!-- Desarrollador -->
+    <a
+      href="https://wa.me/51993106111?text=Hola%20Sebasti%C3%A1n,%20me%20interesa%20saber%20m%C3%A1s%20sobre%20sus%20servicios"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex items-center gap-3 p-4 hover:bg-white/[0.04] transition-colors"
+    >
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0E037F] to-indigo-500 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+        S
+      </div>
+      <div class="flex-1 min-w-0">
+        <p class="text-sm font-semibold text-white">Sebastián Cabrera</p>
+        <p class="text-xs text-gray-500">Desarrollador Web</p>
+      </div>
+      <svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+    </a>
+  </div>
+</div>

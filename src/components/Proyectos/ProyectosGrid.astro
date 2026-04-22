@@ -2,25 +2,28 @@
 import ProyectosGridR from "./ProyectosGridR.tsx";
 ---
 
-<section id="proyectos" class="py-20 px-4 md:px-8 lg:px-20 bg-gray-50 dark:bg-[#27272e] transition-colors duration-300">
-  <div class="max-w-7xl mx-auto">
-    <!-- Encabezado Principal -->
-    <div class="mb-16 text-left">
-      <!-- Badge -->
-      <div class="inline-block rounded-full px-4 py-1 text-sm font-medium bg-[#F6F3FE] dark:bg-[#1e293b] mb-3 transition-colors duration-300">
-        <span class="text-[#020D3B] dark:text-white font-black">PRO</span>
-        <span class="text-[#1864EE] font-black">YECTOS</span>
+<section id="proyectos" class="py-24 px-6 bg-[#050714] border-t border-white/[0.05]">
+
+  <div class="relative z-10 max-w-7xl mx-auto">
+
+    <!-- Cabecera -->
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
+      <div>
+        <p class="text-xs font-medium text-[#6366f1] uppercase tracking-[0.15em] mb-5">Trabajo reciente</p>
+        <h2 class="text-3xl md:text-4xl font-black text-white tracking-tight">Proyectos</h2>
       </div>
-      
-      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#020D3B] dark:text-white mb-8 leading-tight transition-colors duration-300">
-        Algunos de nuestros mejores<br />
-        <span class="text-[#1864EE]">trabajos.</span>
-      </h2>
+      <a
+        href="#proyectos"
+        class="text-xs font-medium text-[#4b5563] hover:text-[#9ca3af] transition-colors duration-150 flex items-center gap-1 mb-0.5"
+      >
+        Ver todos
+        <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
     </div>
 
-    <!-- Grid de proyectos con filtros -->
-    <div class="w-full">
-      <ProyectosGridR client:visible />
-    </div>
+    <ProyectosGridR client:visible />
+
   </div>
 </section>

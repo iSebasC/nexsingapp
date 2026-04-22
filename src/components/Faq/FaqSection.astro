@@ -1,0 +1,140 @@
+---
+const faqs = [
+  {
+    pregunta: "¿Cuánto tiempo tarda en estar lista mi web o sistema?",
+    respuesta: "Depende del alcance del proyecto. Una landing page puede estar en 1-2 semanas. Un sistema completo o CRM puede tomar entre 4 a 8 semanas. Siempre te damos un cronograma claro antes de empezar.",
+  },
+  {
+    pregunta: "¿Trabajan solo con empresas grandes o también con emprendedores?",
+    respuesta: "Trabajamos con todo tipo de negocios: desde emprendedores que están comenzando hasta empresas con equipos establecidos. Lo que importa es tu objetivo, no el tamaño de tu empresa.",
+  },
+  {
+    pregunta: "¿Qué diferencia a NexSign de una agencia tradicional?",
+    respuesta: "Somos un equipo pequeño y especializado: no tenemos intermediarios ni cuentas infladas. Trabajamos directamente con vos, con comunicación clara, entregas a tiempo y un enfoque orientado a resultados reales para tu negocio.",
+  },
+  {
+    pregunta: "¿Puedo solicitar una propuesta sin compromiso?",
+    respuesta: "Sí. Escríbenos por WhatsApp o completa el formulario de contacto y te preparamos una propuesta personalizada. Es gratuita y sin obligación de contratación.",
+  },
+  {
+    pregunta: "¿Ofrecen soporte después de entregar el proyecto?",
+    respuesta: "Sí. Todos nuestros proyectos incluyen un período de soporte post-entrega. También ofrecemos planes de mantenimiento y actualización continuos según tus necesidades.",
+  },
+  {
+    pregunta: "¿En qué países trabajan?",
+    respuesta: "Trabajamos de forma remota con clientes en cualquier país. Tenemos presencia principal en Perú pero atendemos proyectos en toda Latinoamérica y más allá.",
+  },
+];
+---
+
+<section id="faq" class="py-24 px-6 bg-[#050714] border-t border-white/[0.05]">
+  <div class="max-w-4xl mx-auto">
+
+    <!-- Cabecera -->
+    <div class="mb-12">
+      <p class="text-xs font-medium text-[#6366f1] uppercase tracking-[0.15em] mb-5">FAQ</p>
+      <h2 class="text-3xl md:text-4xl font-black text-white tracking-tight">Preguntas frecuentes</h2>
+    </div>
+
+    <!-- Acordeón -->
+    <div id="faq-accordion">
+      {faqs.map((faq, index) => (
+        <div class="faq-item border-b border-white/[0.07]">
+          <button
+            class="faq-trigger w-full flex items-center justify-between gap-6 py-5 text-left"
+            aria-expanded="false"
+          >
+            <span class="text-sm font-medium text-[#d1d5db] leading-snug">
+              {faq.pregunta}
+            </span>
+            <div class="faq-icon shrink-0 w-5 h-5 flex items-center justify-center text-[#4b5563]">
+              <!-- Plus icon -->
+              <svg class="icon-plus w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/>
+              </svg>
+              <!-- Minus icon -->
+              <svg class="icon-minus w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 12h12"/>
+              </svg>
+            </div>
+          </button>
+
+          <div class="faq-content overflow-hidden" style="height: 0;">
+            <p class="text-sm text-[#6b7280] leading-relaxed pt-1 pb-5">
+              {faq.respuesta}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-10 pt-8 border-t border-white/[0.05]">
+      <p class="text-xs text-[#374151]">
+        ¿Otra pregunta?
+        <a
+          href="https://wa.me/51993106111?text=Hola,%20tengo%20una%20pregunta"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-[#9ca3af] hover:text-white transition-colors duration-150 ml-1 underline underline-offset-2"
+        >
+          Escríbenos por WhatsApp
+        </a>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .faq-trigger {
+    outline: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .faq-trigger:focus-visible {
+    outline: 1px solid rgba(99, 102, 241, 0.3);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  .faq-content {
+    transition: height 0.22s ease;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const triggers = document.querySelectorAll('.faq-trigger');
+
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.closest('.faq-item') as HTMLElement;
+        const content = item.querySelector('.faq-content') as HTMLElement;
+        const iconPlus = item.querySelector('.icon-plus') as SVGElement;
+        const iconMinus = item.querySelector('.icon-minus') as SVGElement;
+        const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+
+        // Cerrar todos
+        document.querySelectorAll('.faq-item').forEach(otherItem => {
+          const otherContent = otherItem.querySelector('.faq-content') as HTMLElement;
+          const otherTrigger = otherItem.querySelector('.faq-trigger');
+          const otherPlus = otherItem.querySelector('.icon-plus') as SVGElement;
+          const otherMinus = otherItem.querySelector('.icon-minus') as SVGElement;
+          otherContent.style.height = '0';
+          otherTrigger?.setAttribute('aria-expanded', 'false');
+          if (otherPlus) otherPlus.classList.remove('hidden');
+          if (otherMinus) otherMinus.classList.add('hidden');
+        });
+
+        // Abrir el actual si estaba cerrado
+        if (!isOpen) {
+          content.style.height = content.scrollHeight + 'px';
+          trigger.setAttribute('aria-expanded', 'true');
+          if (iconPlus) iconPlus.classList.add('hidden');
+          if (iconMinus) iconMinus.classList.remove('hidden');
+        }
+      });
+    });
+  });
+</script>
