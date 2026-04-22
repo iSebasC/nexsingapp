@@ -2,15 +2,15 @@
 
 export interface Proyecto {
   slug: string;
-  titulo: string;           // nombre de marca (Hilink, Carpio…)
-  tituloNegocio: string;    // título orientado a negocio (para cards)
+  titulo: string; // nombre de marca (Hilink, Carpio…)
+  tituloNegocio: string; // título orientado a negocio (para cards)
   descripcion: string;
   problema: string;
   solucion: string;
   cliente: string;
   año: number;
   categoria: string;
-  region?: string;          // contexto geográfico (Australia, Perú…)
+  region?: string; // contexto geográfico (Australia, Perú…)
   imagen: string;
   resultados: string[];
   stack?: string[];
@@ -18,108 +18,106 @@ export interface Proyecto {
   enlaceWeb?: string;
 }
 
-
 export const proyectos: Proyecto[] = [
-
-  // 1. Internacional (Australia)
   {
-    slug: "hilink-dashboard",
-    titulo: "Hilink",
-    tituloNegocio: "Plataforma digital para empresa internacional",
+    slug: "sorenu-crm",
+    titulo: "Sorenu",
+    tituloNegocio: "CRM básico para seguimiento de clientes y ventas",
     descripcion:
-      "Diseñamos la plataforma completa de una startup internacional de turismo de aventura: app móvil, mapas offline y panel de administración orientado a conversión.",
+      "Sistema CRM desarrollado para centralizar clientes, consultas y oportunidades comerciales, facilitando el seguimiento del proceso de venta y la gestión diaria del negocio.",
     problema:
-      "Una startup australiana de turismo de aventura necesitaba una plataforma digital completa. Sus usuarios no podían planificar rutas ni orientarse en zonas sin cobertura, y no existía un panel de gestión para los operadores.",
+      "El negocio necesitaba una forma más ordenada de registrar clientes, hacer seguimiento a consultas y mantener visibilidad del estado comercial de cada contacto. Sin un sistema centralizado, el seguimiento era disperso y dependía demasiado de procesos manuales.",
     solucion:
-      "Diseñamos una app móvil con mapas completamente offline, planificación de rutas personalizadas y realidad aumentada para orientación en campo. Incluye panel administrativo para gestores de destinos y módulo de comunidad para descubrimiento de nuevas rutas.",
-    cliente: "Hilink Solutions",
-    año: 2024,
-    categoria: "Product Design",
-    region: "Australia",
-    imagen: "/proyectos/4.png",
+      "Desarrollamos un CRM básico enfocado en gestión comercial, permitiendo registrar clientes, controlar estados de seguimiento, organizar oportunidades y dar continuidad al proceso de ventas desde una sola plataforma.",
+    cliente: "Sorenu",
+    año: 2026,
+    categoria: "CRM / Sistema de gestión",
+    region: "Perú",
+    imagen: "/proyectos/sorenu.svg",
     resultados: [
-      "Navegación funcional sin conexión a internet",
-      "Reducción de incidencias por desorientación en ruta",
-      "Panel de gestión claro para administradores de destinos",
-      "Módulo de descubrimiento que incrementa retención de usuarios",
+      "Seguimiento más ordenado de clientes y oportunidades comerciales",
+      "Centralización de la información de contacto en un solo sistema",
+      "Mayor control del estado de cada lead o cliente",
+      "Mejora del flujo comercial para ventas y atención",
     ],
-    stack: ["React Native", "Node.js", "Figma"],
-    enlaceWeb: "https://travelhk.netlify.app/"
+    stack: ["Laravel", "Vue"],
+    enlaceWeb: "https://sorenu.pe/",
   },
 
   // 2. Marketplace (Perú)
   {
-    slug: "prestopolis-web",
-    titulo: "Prestopolis",
-    tituloNegocio: "Marketplace de inversión inmobiliaria",
+    slug: "rantti-marketplace",
+    titulo: "Rantti",
+    tituloNegocio: "Marketplace de negociación en tiempo real",
     descripcion:
-      "Construimos el marketplace que conecta inversionistas con proyectos inmobiliarios en Perú: gestión de proyectos, depósitos y panel de rendimientos en un solo sistema.",
+      "Marketplace que permite a compradores y vendedores negociar precios en tiempo real, combinando la experiencia de Facebook Marketplace con el modelo dinámico de negociación tipo InDrive.",
     problema:
-      "Gestores de proyectos inmobiliarios no tenían una plataforma que conectara a inversionistas individuales con sus oportunidades de forma transparente, con trazabilidad de depósitos y rendimientos en tiempo real.",
+      "Los usuarios que compran y venden en redes sociales no cuentan con una forma estructurada de negociar precios. El proceso es desordenado, con conversaciones dispersas, precios poco claros y sin control en publicaciones ni modelo de crecimiento.",
     solucion:
-      "Desarrollamos una plataforma completa de crowdfunding inmobiliario: publicación de proyectos, gestión de depósitos, panel de inversiones por usuario y dashboard administrativo para gestores. Arquitectura robusta con Next.js en frontend, Laravel y NestJS en backend.",
-    cliente: "Miguel",
-    año: 2024,
-    categoria: "Web",
+      "Desarrollamos una plataforma completa de marketplace con sistema de publicaciones, chat en tiempo real para negociación y lógica inspirada en InDrive. Integra planes de suscripción para controlar publicaciones y monetizar la plataforma.",
+    cliente: "Rantti",
+    año: 2026,
+    categoria: "Sistema / Marketplace",
     region: "Perú",
-    imagen: "/proyectos/prestopolis.svg",
+    imagen: "/proyectos/rantti.png",
     resultados: [
-      "Plataforma operativa conectando inversionistas con proyectos reales",
-      "Panel administrativo completo para gestores e inversionistas",
-      "Trazabilidad total de depósitos y estado de cada proyecto",
+      "Sistema de negociación en tiempo real entre compradores y vendedores",
+      "Modelo de monetización implementado mediante planes de publicación",
+      "Experiencia estructurada y más eficiente que redes sociales tradicionales",
     ],
-    stack: ["Next.js", "Laravel", "MySQL"],
-    autor: "Sebastian",
-    enlaceWeb: "https://www.prestopolis.com/plataforma"
+    stack: ["Next.js", "Laravel", "MySQL", "Culqi"],
+    enlaceWeb: "https://www.rantti.com/",
   },
 
   // 3. CRM / Sistema
   {
-    slug: "carpio-web",
-    titulo: "Carpio",
-    tituloNegocio: "Sistema CRM para gestión de clientes y ventas",
+    slug: "sel-story-lessons",
+    titulo: "SEL Story Lessons",
+    tituloNegocio:
+      "Plataforma educativa de lectura digital para colegios y familias",
     descripcion:
-      "Sistema CRM a medida que reemplazó hojas de cálculo y centralizó la operación comercial: clientes, inventario de vehículos, oportunidades de venta y reportes.",
+      "Plataforma educativa que permite a estudiantes acceder a libros digitales con lectura guiada por profesor o audio integrado, orientada a colegios y padres que buscan fortalecer el aprendizaje y la comprensión lectora.",
     problema:
-      "Una concesionaria de vehículos operaba sin sistema centralizado. Los seguimientos de clientes se hacían en hojas de cálculo, las oportunidades se perdían y no había visibilidad del pipeline comercial.",
+      "Colegios y familias no contaban con una plataforma centralizada para ofrecer libros digitales con acceso diferenciado, lectura asistida y control de contenido según tipo de suscripción. Además, necesitaban una forma simple de monetizar el acceso premium a más libros.",
     solucion:
-      "Construimos un CRM interno con módulos de contactos, inventario de vehículos, seguimiento de oportunidades por etapa y reportes de actividad. La plataforma reemplazó los procesos manuales y centralizó la operación completa del equipo de ventas.",
-    cliente: "Anthony",
-    año: 2024,
-    categoria: "Sistema Administrativo",
-    region: "Perú",
-    imagen: "/proyectos/carpio.png",
+      "Desarrollamos una plataforma web educativa con acceso para School y Parent, catálogo de libros en planes free y premium, reproducción mediante lectura guiada o audio, panel administrativo para gestión de contenido y pasarela de pagos con Stripe para suscripciones.",
+    cliente: "SEL Story Lessons",
+    año: 2026,
+    categoria: "EdTech / Plataforma educativa",
+    region: "Australia",
+    imagen: "/proyectos/logo-sel-story-lessons.png",
     resultados: [
-      "Pipeline de ventas visible y estructurado por etapa",
-      "Cero pérdida de leads por falta de seguimiento",
-      "Gestión de clientes completamente centralizada y auditable",
+      "Acceso diferenciado para colegios y familias dentro de una sola plataforma",
+      "Sistema de suscripción premium para desbloquear más libros",
+      "Panel administrativo para gestionar libros free y premium",
+      "Experiencia de lectura digital con apoyo de audio y uso guiado en clases",
     ],
-    stack: ["Laravel", "Vue", "MySQL"],
-    autor: "Sebastian & Julio"
+    stack: ["Laravel", "Vue", "Stripe"],
+    enlaceWeb: "https://selstorylessons.com/",
   },
-
   // 4. Fintech
   {
-    slug: "ganahoy-app",
-    titulo: "Gana Hoy",
-    tituloNegocio: "Plataforma fintech de ahorro personal",
+    slug: "nowfocus-productividad",
+    titulo: "NowFocus",
+    tituloNegocio: "Plataforma digital para productividad personal",
     descripcion:
-      "Plataforma de ahorro que permite crear planes personalizados por meta, monitorear movimientos en tiempo real y mantener hábitos financieros sostenidos.",
+      "Plataforma enfocada en mejorar la concentración y gestión del tiempo mediante herramientas simples como temporizadores tipo Pomodoro, gestión de tareas y seguimiento de sesiones.",
     problema:
-      "Usuarios sin herramientas accesibles para crear y mantener hábitos de ahorro. Las soluciones existentes eran complejas, poco transparentes y no adaptables a objetivos personales distintos.",
+      "Los usuarios tienen dificultades para mantener el enfoque en tareas importantes debido a distracciones constantes, mala gestión del tiempo y falta de herramientas claras para organizar su trabajo diario.",
     solucion:
-      "Diseñamos una plataforma de ahorro con planes flexibles por meta, monitoreo en tiempo real y una interfaz que prioriza confianza y simplicidad para fomentar adopción sostenida.",
-    cliente: "Gana Hoy",
-    año: 2024,
-    categoria: "Product Design",
+      "Diseñamos una plataforma web minimalista centrada en el enfoque profundo (deep work), integrando temporizadores tipo Pomodoro, gestión de tareas y métricas de productividad para fomentar disciplina y constancia.",
+    cliente: "NowFocus",
+    año: 2026,
+    categoria: "Producto digital / Web App",
     region: "Perú",
-    imagen: "/proyectos/gana-hoy.png",
+    imagen: "/proyectos/nowfocus.svg",
     resultados: [
-      "Planes de ahorro personalizados y ajustables por objetivo",
-      "Monitoreo de metas en tiempo real desde cualquier dispositivo",
-      "Alta tasa de adopción en primeras sesiones de uso",
+      "Mejora en la concentración y reducción de distracciones",
+      "Incremento en la productividad diaria de los usuarios",
+      "Mayor claridad en la planificación de tareas",
+      "Retención de usuarios gracias a métricas y progreso visible",
     ],
-    stack: ["React", "Node.js", "Figma"],
-    enlaceWeb: "https://ganahoy.netlify.app/"
+    stack: ["React", "Tailwind CSS", "shadcn/ui", "Radix UI", "Framer Motion"],
+    enlaceWeb: "https://www.nowfocus.dev/landing",
   },
 ];
