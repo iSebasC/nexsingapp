@@ -1,10 +1,18 @@
 ---
 import TestimonioCard from './TestimonioCard.astro';
-import { useValoraciones } from '../../composables/useValoraciones';
 
-const { obtenerValoraciones } = useValoraciones();
-const raw = await obtenerValoraciones();
-const testimonios = raw.slice(0, 2);
+const testimonios = [
+  {
+    nombre_completo: "Cesar Estrada",
+    area: "Publicista",
+    comentario: "100% recomiendo trabajar con Nexsign, entrega un buen trabajo, y mantiene una comunicación fácil y rápida"
+  },
+  {
+    nombre_completo: "María González",
+    area: "Emprendedora",
+    comentario: "Excelente servicio, muy profesional y puntual. El resultado superó mis expectativas completamente."
+  }
+];
 ---
 
 <section id="testimonios" class="py-24 px-6 bg-[#050714] border-t border-white/[0.05]">
